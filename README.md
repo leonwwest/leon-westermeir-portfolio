@@ -24,9 +24,10 @@ Open [http://localhost:3000](http://localhost:3000).
 ```bash
 npm test
 npm run lint
+npm run build
 ```
 
-The test command creates the production build and verifies the server-rendered portfolio and legal routes.
+The test command creates the Sites/Vinext build and verifies the server-rendered portfolio and legal routes. `npm run build` validates the Next.js production path used by the custom Vercel domain.
 
 ## Public surface
 
