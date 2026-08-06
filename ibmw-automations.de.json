@@ -1,0 +1,67 @@
+{
+  "source": "https://ibmw-automations.de/",
+  "tokens": {
+    "spacing": {
+      "scale": [8.8, 12.8, 16, 20, 24, 72, 115],
+      "base_unit": 4
+    },
+    "typography": {
+      "families": ["IBM Plex Sans", "Public Sans", "ui-monospace"],
+      "scale": [
+        { "role": "hero", "size": "89.28px", "weight": "650", "family": "IBM Plex Sans" },
+        { "role": "section", "size": "66.24px", "weight": "650", "family": "IBM Plex Sans" },
+        { "role": "subheading", "size": "24px", "weight": "400", "family": "IBM Plex Sans" },
+        { "role": "body", "size": "15.04px", "weight": "400", "family": "Public Sans" },
+        { "role": "micro-label", "size": "10.4px", "weight": "800", "family": "Public Sans" }
+      ]
+    },
+    "colors": [
+      { "role": "deep-field", "value": "#0D2639" },
+      { "role": "paper", "value": "#F7F5EF" },
+      { "role": "ink", "value": "#15334F" },
+      { "role": "cool-panel", "value": "#E7E9E5" },
+      { "role": "white-panel", "value": "#FFFEFA" },
+      { "role": "signal-orange", "value": "#D56D24" },
+      { "role": "signal-orange-text", "value": "#9C4E18" },
+      { "role": "muted-text", "value": "#5E6B73" }
+    ],
+    "radius": ["2px", "3px", "4px", "12px", "999px"],
+    "shadows": [
+      "12px 12px 0 rgba(21, 51, 79, 0.09)",
+      "0 18px 44px rgba(11, 36, 54, 0.08)",
+      "0 12px 28px rgba(11, 36, 54, 0.16)"
+    ],
+    "image_ratios": [],
+    "grid": { "max_width": "1440px", "columns": 2, "gutter": "72px" }
+  },
+  "taste": [
+    {
+      "name": "Evidence occupies the image slot",
+      "trigger": "When the first viewport needed a visual anchor",
+      "decision": "Chose a 401px by 387px operational workbench over a hero photograph or illustration",
+      "reason": "A visitor evaluating process automation can inspect a working mechanism sooner than they can trust a mood image",
+      "evidence": ["No rendered images above 80px", "Workbench ratio 1.04:1", "Two-column hero with 72px gutter"]
+    },
+    {
+      "name": "Scroll pauses mark chapters",
+      "trigger": "When successive explanations could have been compressed into a shorter page",
+      "decision": "Chose 115px section intervals and 72px section padding over a dense continuous pitch",
+      "reason": "Each operational claim receives a reset before the next one, so the reader can retain the sequence rather than skim a wall of promises",
+      "evidence": ["Eight consecutive 115px section gaps", "72px section padding", "16px to 24px component gaps"]
+    },
+    {
+      "name": "Orange behaves as a status signal",
+      "trigger": "When a second brand color could have spread across backgrounds and decoration",
+      "decision": "Chose tiny #D56D24 and #9C4E18 signal moments over broad orange surfaces",
+      "reason": "Rare color reads as a change in operational state instead of becoming atmosphere",
+      "evidence": ["#0D2639 owns 29.9% of measured background area", "Orange background area rounds to 0%", "Navy and paper remain the dominant fields"]
+    },
+    {
+      "name": "Workshop edges replace soft containers",
+      "trigger": "When dense process material needed separation",
+      "decision": "Chose 2px to 4px corners and a 12px hard offset shadow over large-radius floating cards",
+      "reason": "The components feel handled and placed like tools or sheets, which keeps technical material grounded in work rather than presentation chrome",
+      "evidence": ["2px radius appears 12 times", "3px radius appears 7 times", "12px 12px navy-tinted offset shadow on the workbench"]
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-06T19:09:44+02:00",
+  "title": "Design System: Leon Westermeir Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "signal": {
+        "role": "primary",
+        "displayName": "Säuregrünes Prüfsignal",
+        "tonalRamp": [
+          "oklch(15% 0.07 125)",
+          "oklch(26% 0.12 125)",
+          "oklch(38% 0.16 125)",
+          "oklch(50% 0.20 125)",
+          "oklch(62% 0.23 125)",
+          "oklch(74% 0.25 125)",
+          "oklch(86% 0.20 125)",
+          "oklch(95% 0.09 125)"
+        ]
+      },
+      "signal-deep": {
+        "role": "primary",
+        "displayName": "Tiefes Signalgrün",
+        "tonalRamp": [
+          "oklch(15% 0.05 125)",
+          "oklch(26% 0.08 125)",
+          "oklch(38% 0.11 125)",
+          "oklch(50% 0.12 125)",
+          "oklch(62% 0.11 125)",
+          "oklch(74% 0.09 125)",
+          "oklch(86% 0.06 125)",
+          "oklch(95% 0.03 125)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warmes Arbeitspapier",
+        "tonalRamp": [
+          "oklch(15% 0.012 100)",
+          "oklch(26% 0.012 100)",
+          "oklch(38% 0.012 100)",
+          "oklch(50% 0.012 100)",
+          "oklch(62% 0.012 100)",
+          "oklch(74% 0.012 100)",
+          "oklch(86% 0.012 100)",
+          "oklch(95% 0.012 100)"
+        ]
+      },
+      "paper-bright": {
+        "role": "neutral",
+        "displayName": "Helles Prüfblatt",
+        "tonalRamp": [
+          "oklch(15% 0.008 100)",
+          "oklch(26% 0.008 100)",
+          "oklch(38% 0.008 100)",
+          "oklch(50% 0.008 100)",
+          "oklch(62% 0.008 100)",
+          "oklch(74% 0.008 100)",
+          "oklch(86% 0.008 100)",
+          "oklch(95% 0.008 100)"
+        ]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Tiefes Graphit",
+        "tonalRamp": [
+          "oklch(15% 0.006 120)",
+          "oklch(26% 0.006 120)",
+          "oklch(38% 0.006 120)",
+          "oklch(50% 0.006 120)",
+          "oklch(62% 0.006 120)",
+          "oklch(74% 0.006 120)",
+          "oklch(86% 0.006 120)",
+          "oklch(95% 0.006 120)"
+        ]
+      },
+      "graphite-soft": {
+        "role": "neutral",
+        "displayName": "Weiches Graphit",
+        "tonalRamp": [
+          "oklch(15% 0.008 120)",
+          "oklch(26% 0.008 120)",
+          "oklch(38% 0.008 120)",
+          "oklch(50% 0.008 120)",
+          "oklch(62% 0.008 120)",
+          "oklch(74% 0.008 120)",
+          "oklch(86% 0.008 120)",
+          "oklch(95% 0.008 120)"
+        ]
+      },
+      "graphite-muted": {
+        "role": "neutral",
+        "displayName": "Gedämpftes Graphit",
+        "tonalRamp": [
+          "oklch(15% 0.008 120)",
+          "oklch(26% 0.008 120)",
+          "oklch(38% 0.008 120)",
+          "oklch(50% 0.008 120)",
+          "oklch(62% 0.008 120)",
+          "oklch(74% 0.008 120)",
+          "oklch(86% 0.008 120)",
+          "oklch(95% 0.008 120)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Werkstattlinie",
+        "tonalRamp": [
+          "oklch(15% 0.007 100)",
+          "oklch(26% 0.007 100)",
+          "oklch(38% 0.007 100)",
+          "oklch(50% 0.007 100)",
+          "oklch(62% 0.007 100)",
+          "oklch(74% 0.007 100)",
+          "oklch(86% 0.007 100)",
+          "oklch(95% 0.007 100)"
+        ]
+      },
+      "inverse-muted": {
+        "role": "neutral",
+        "displayName": "Inverse Metadaten",
+        "tonalRamp": [
+          "oklch(15% 0.006 110)",
+          "oklch(26% 0.006 110)",
+          "oklch(38% 0.006 110)",
+          "oklch(50% 0.006 110)",
+          "oklch(62% 0.006 110)",
+          "oklch(74% 0.006 110)",
+          "oklch(86% 0.006 110)",
+          "oklch(95% 0.006 110)"
+        ]
+      },
+      "inverse-rule": {
+        "role": "neutral",
+        "displayName": "Inverse Werkstattlinie",
+        "tonalRamp": [
+          "oklch(15% 0.006 110)",
+          "oklch(26% 0.006 110)",
+          "oklch(38% 0.006 110)",
+          "oklch(50% 0.006 110)",
+          "oklch(62% 0.006 110)",
+          "oklch(74% 0.006 110)",
+          "oklch(86% 0.006 110)",
+          "oklch(95% 0.006 110)"
+        ]
+      },
+      "demo-black": {
+        "role": "neutral",
+        "displayName": "Demo-Schwarz",
+        "tonalRamp": [
+          "oklch(15% 0.006 140)",
+          "oklch(26% 0.006 140)",
+          "oklch(38% 0.006 140)",
+          "oklch(50% 0.006 140)",
+          "oklch(62% 0.006 140)",
+          "oklch(74% 0.006 140)",
+          "oklch(86% 0.006 140)",
+          "oklch(95% 0.006 140)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Positioning Display",
+        "purpose": "Nur für die erste, kurze Positionierung im Hero."
+      },
+      "headline": {
+        "displayName": "Chapter Headline",
+        "purpose": "Eröffnet große Argument- und Arbeitskapitel."
+      },
+      "title": {
+        "displayName": "Inspection Title",
+        "purpose": "Benennt das ausgewählte Problem oder System."
+      },
+      "body": {
+        "displayName": "Engineering Body",
+        "purpose": "Erklärt Zweck, Ergebnis, Einordnung und Grenzen."
+      },
+      "label": {
+        "displayName": "Measurement Label",
+        "purpose": "Kennzeichnet Status, Tests, Rollen, Indizes und Systemmetadaten."
+      }
+    },
+    "shadows": [
+      {
+        "name": "primary-action-offset",
+        "value": "5px 5px 0 #161716",
+        "purpose": "Harter mechanischer Versatz unter der einzigen primären Aktion."
+      },
+      {
+        "name": "primary-action-offset-hover",
+        "value": "7px 7px 0 #161716",
+        "purpose": "Etwas größerer Versatz als taktile Hover-Antwort."
+      },
+      {
+        "name": "dispatch-offset",
+        "value": "10px 10px 0 #161716",
+        "purpose": "Markiert das Dispatch-Blatt als aufliegendes Werkstück."
+      },
+      {
+        "name": "signal-halo",
+        "value": "0 0 0 3px rgba(200, 255, 61, 0.22)",
+        "purpose": "Leiser Halo ausschließlich um kleine Statuspunkte."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Direkte, schnell auslaufende Bewegung für alle Zustandswechsel."
+      },
+      {
+        "name": "duration-fast",
+        "value": "150ms",
+        "purpose": "Taktile Button- und Schattenantworten."
+      },
+      {
+        "name": "duration-standard",
+        "value": "180ms",
+        "purpose": "Farb-, Auswahl- und Skip-Link-Zustände."
+      },
+      {
+        "name": "duration-underline",
+        "value": "220ms",
+        "purpose": "Einzeichnende Link-Unterstreichung."
+      },
+      {
+        "name": "duration-intro",
+        "value": "720ms",
+        "purpose": "Einmaliger ruhiger Auftritt von Hero-Text und Dispatch-Blatt."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "1040px"
+      },
+      {
+        "name": "mobile",
+        "value": "700px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Einzige säuregrüne Hauptaktion mit hartem mechanischem Versatz.",
+      "html": "<a class=\"ds-primary-action\" href=\"#\">Arbeit ansehen <span aria-hidden=\"true\">↓</span></a>",
+      "css": ".ds-primary-action { min-height: 2.75rem; display: inline-flex; align-items: center; gap: 1.2rem; padding: 0.8rem 1rem; background: var(--signal, #c8ff3d); color: var(--ink, #161716); border: 1px solid var(--ink, #161716); border-radius: 0; box-shadow: 5px 5px 0 var(--ink, #161716); font-family: var(--font-sans, Arial, sans-serif); font-weight: 700; text-decoration: none; transition: transform 150ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 150ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-primary-action:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ink, #161716); } .ds-primary-action:focus-visible { outline: 3px solid var(--signal-dark, #526d00); outline-offset: 4px; } .ds-primary-action:active { transform: scale(0.97); }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "description": "Ruhiger Textlink mit von rechts einzeichnender Werkstattlinie.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\">Projekte</a>",
+      "css": ".ds-nav-link { position: relative; min-height: 2.75rem; display: inline-flex; align-items: center; color: var(--ink, #161716); font-family: var(--font-sans, Arial, sans-serif); font-size: 0.875rem; font-weight: 600; text-decoration: none; } .ds-nav-link::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: 0.25rem; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-nav-link:hover::after { transform: scaleX(1); transform-origin: left; } .ds-nav-link:focus-visible { outline: 3px solid var(--signal-dark, #526d00); outline-offset: 4px; }"
+    },
+    {
+      "name": "Technology Tag",
+      "kind": "chip",
+      "description": "Scharfkantige, rein informative Technologie-Metadaten.",
+      "html": "<span class=\"ds-tech-tag\">Terraform</span>",
+      "css": ".ds-tech-tag { display: inline-flex; align-items: center; padding: 0.32rem 0.5rem; background: transparent; color: var(--ink, #161716); border: 1px solid var(--line, #c8c9c2); border-radius: 0; font-family: var(--font-mono, monospace); font-size: 0.68rem; }"
+    },
+    {
+      "name": "Active Project Row",
+      "kind": "custom",
+      "refersTo": "project-row-active",
+      "description": "Aktives Prüflos invertiert auf Graphit und zeigt den ausgewählten Zustand ohne Zusatzkarte.",
+      "html": "<button class=\"ds-project-row-active\" aria-pressed=\"true\"><span class=\"ds-project-number-active\">02</span><span class=\"ds-project-copy-active\"><strong>M365 Governance Automation</strong><small>Bestände prüfen, Abweichungen erklären, Änderungen freigeben.</small></span><span class=\"ds-project-pass\">● PASS</span><span aria-hidden=\"true\">→</span></button>",
+      "css": ".ds-project-row-active { width: 100%; min-height: 8.6rem; padding: 1.3rem clamp(1.25rem, 4vw, 4.5rem); display: grid; grid-template-columns: 2.4rem minmax(0, 1fr) auto 1.2rem; gap: 1rem; align-items: center; border: 0; border-bottom: 1px solid var(--line, #c8c9c2); border-radius: 0; background: var(--ink, #161716); color: var(--paper, #f1f0ea); text-align: left; cursor: pointer; } .ds-project-row-active:focus-visible { outline: 3px solid var(--signal, #c8ff3d); outline-offset: -4px; } .ds-project-row-active:active { transform: scale(0.97); } .ds-project-number-active { align-self: start; font-family: var(--font-mono, monospace); font-size: 0.72rem; color: #b5b8b0; } .ds-project-copy-active { display: grid; gap: 0.5rem; } .ds-project-copy-active strong { font-family: var(--font-sans, Arial, sans-serif); font-size: 1.05rem; font-weight: 600; letter-spacing: -0.02em; } .ds-project-copy-active small { color: #b5b8b0; font-family: var(--font-sans, Arial, sans-serif); font-size: 0.82rem; line-height: 1.45; } .ds-project-pass { color: var(--signal, #c8ff3d); font-family: var(--font-mono, monospace); font-size: 0.71rem; letter-spacing: 0.07em; }"
+    },
+    {
+      "name": "Dispatch Card",
+      "kind": "card",
+      "description": "Hero-Prüfblatt mit Graphitkopf, Kennzahlen und säuregrünem Abschluss.",
+      "html": "<article class=\"ds-dispatch\"><header>ENGINEERING DISPATCH <span>DE</span></header><main><small>AKTIVER PRÜFBEREICH</small><strong>Cloud foundations<br>&amp; safe automation</strong><dl><div><dt>LABS</dt><dd>05</dd></div><div><dt>TESTS</dt><dd>57</dd></div><div><dt>STATUS</dt><dd>PASS</dd></div></dl></main><footer>BELEGE: CODE · TESTS · RUNBOOKS</footer></article>",
+      "css": ".ds-dispatch { max-width: 28rem; background: var(--paper-bright, #faf9f5); color: var(--ink, #161716); border: 1px solid var(--ink, #161716); border-radius: 0; box-shadow: 10px 10px 0 var(--ink, #161716); font-family: var(--font-sans, Arial, sans-serif); } .ds-dispatch header, .ds-dispatch footer { min-height: 2.7rem; padding: 0 1rem; display: flex; align-items: center; justify-content: space-between; background: var(--ink, #161716); color: var(--paper, #f1f0ea); font-family: var(--font-mono, monospace); font-size: 0.71rem; letter-spacing: 0.07em; } .ds-dispatch main { padding: clamp(1.5rem, 3vw, 2.5rem); } .ds-dispatch main > small { display: block; margin-bottom: 2rem; color: var(--muted, #5f625d); font-family: var(--font-mono, monospace); font-size: 0.71rem; letter-spacing: 0.07em; } .ds-dispatch main > strong { min-height: 6.2rem; display: block; margin-bottom: 3.5rem; font-size: clamp(1.6rem, 3vw, 2.65rem); font-weight: 600; line-height: 1.08; letter-spacing: -0.045em; } .ds-dispatch dl { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink, #161716); border-bottom: 1px solid var(--ink, #161716); } .ds-dispatch dl div { padding: 0.9rem 0.45rem; border-right: 1px solid var(--ink, #161716); } .ds-dispatch dl div:last-child { border-right: 0; } .ds-dispatch dt { color: var(--muted, #5f625d); font-family: var(--font-mono, monospace); font-size: 0.66rem; } .ds-dispatch dd { margin: 0.4rem 0 0; font-family: var(--font-mono, monospace); font-size: 1.2rem; } .ds-dispatch footer { background: var(--signal, #c8ff3d); color: var(--ink, #161716); border-top: 1px solid var(--ink, #161716); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Systems Dispatch Board",
+    "overview": "Das Portfolio wirkt wie ein helles Inbetriebnahmeprotokoll: ruhig, präzise, werkstattartig und für Recruiter sofort lesbar. Viel warme Arbeitsfläche und ein strenges Linienraster geben realen Projektdemos, Tests und Runbooks den Charakter sichtbarer Prüfbelege. Es ist kein simuliertes Terminal und keine technische Kulisse; die Oberfläche ordnet vorhandene Arbeit wie ein Dispatch Board.\n\nDie Sprache bleibt menschlich und direkt. Scharfe Kanten, große Satzflächen und wenige bewusst gesetzte Statussignale ersetzen dekorative Karten, Verläufe und Effekte. Die alte Navy-Orange-Agenturwelt sowie generische KI- oder SaaS-Portfolios sind bestätigte Anti-Referenzen.",
+    "keyCharacteristics": [
+      "Warmes Arbeitspapier mit tiefem Graphit statt reinem Schwarz-Weiß.",
+      "Säuregrün erscheint selten und ausschließlich als Signal, Status oder primäre Aktion.",
+      "Reale Demos und Prüfsummen besetzen die visuell stärksten Flächen.",
+      "Scharfe Werkstattkanten, Linien und großzügige Kapitelabstände strukturieren die Seite.",
+      "Instrument Sans trägt die Aussage; Fragment Mono kennzeichnet Messwerte und Metadaten."
+    ],
+    "rules": [
+      {
+        "name": "The Signal Rarity Rule",
+        "body": "Säuregrün kennzeichnet nur überprüfbare Zustände, primäre Handlungen oder den einen Kontaktabschluss; es ist niemals dekorativer Flächenfüller.",
+        "section": "colors"
+      },
+      {
+        "name": "The Paper Before White Rule",
+        "body": "Neue helle Flächen beginnen mit warmem Papier oder hellem Prüfblatt, nicht mit klinischem Reinweiß.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voice Rule",
+        "body": "Instrument Sans spricht; Fragment Mono misst. Mono wird nicht für längere Erklärungen oder dekorative Tech-Anmutung eingesetzt.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight Headline Rule",
+        "body": "Große Überschriften bleiben schwer, eng und kurz; zusätzliche Schriftschnitte oder künstliche Effekte ersetzen niemals klare Zeilenumbrüche.",
+        "section": "typography"
+      },
+      {
+        "name": "The Chapter Distance Rule",
+        "body": "Große Abstände trennen eigenständige Argumente; feine Linien trennen Einträge innerhalb eines Arguments.",
+        "section": "layout"
+      },
+      {
+        "name": "The Structural Shadow Rule",
+        "body": "Schatten simulieren nur den mechanischen Versatz eines konkreten Elements; diffuse Ambient- oder Glaseffekte gehören nicht in dieses System.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Circle Rule",
+        "body": "Kreisformen sind ausschließlich Statussignalen vorbehalten.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do beginne neue Flächen mit warmem Arbeitspapier, Graphitlinien und großzügiger Kapiteltrennung.",
+      "Do nutze Säuregrün nur für Status, primäre Aktion, Fokus oder den abschließenden Kontakt.",
+      "Do zeige reale Demos, Tests, Runbooks oder nachvollziehbare Messwerte an den visuell stärksten Stellen.",
+      "Do behalte Instrument Sans für Aussagen und Fragment Mono für Messung und Metadaten bei.",
+      "Do verdichte Layouts unter 1040px und 700px, ohne Fokus, Lesbarkeit oder 44px-Ziele zu verlieren."
+    ],
+    "donts": [
+      "Don't verwende Navy-Orange, Verläufe, Glasflächen oder generische SaaS-Karten.",
+      "Don't runde Buttons, Container oder Projektzeilen; Kreise gehören nur zu Statuspunkten.",
+      "Don't setze Säuregrün als dekorativen Hintergrund für beliebige Inhaltssektionen.",
+      "Don't ersetze echte Projektbelege durch KI-generierte Illustrationen, abstrakte Tech-Grafiken oder erfundene Dashboards.",
+      "Don't füge diffuse Schatten, dauernde Bewegung oder Hover-only-Bedeutung hinzu."
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "source": "https://emilkowal.ski/",
+  "tokens": {
+    "spacing": {
+      "scale": [8, 12, 16, 24, 64, 128],
+      "base_unit": 4
+    },
+    "typography": {
+      "families": ["Sans"],
+      "scale": [
+        { "role": "section-title", "size": "16px", "weight": "500", "family": "Sans" },
+        { "role": "body", "size": "16px", "weight": "400", "family": "Sans" },
+        { "role": "utility", "size": "14px", "weight": "400", "family": "Sans" }
+      ]
+    },
+    "colors": [
+      { "role": "page-background", "value": "#FDFDFC" },
+      { "role": "primary-surface", "value": "#FFFFFF" },
+      { "role": "text-primary", "value": "#21201C" },
+      { "role": "text-secondary", "value": "#63635E" },
+      { "role": "inverse-text", "value": "#FDFDFC" }
+    ],
+    "radius": ["6px", "8px", "9999px"],
+    "shadows": [
+      "0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.04)"
+    ],
+    "image_ratios": [],
+    "grid": { "max_width": "644px", "columns": 1, "gutter": "0px" }
+  },
+  "taste": [
+    {
+      "name": "The index replaces the showcase",
+      "trigger": "When projects and essays needed to be browsed quickly",
+      "decision": "Chose linked names with one-sentence descriptions over project cards, screenshots or thumbnails",
+      "reason": "The visitor compares what was made and why it exists without first decoding presentation chrome",
+      "evidence": ["Zero detected cards", "Zero images above 80px", "One 644px content column"]
+    },
+    {
+      "name": "Distance carries hierarchy",
+      "trigger": "When the page needed to separate biography, projects and writing",
+      "decision": "Chose repeated 128px chapter gaps over borders, background changes or oversized headings",
+      "reason": "A long blank interval makes the next topic unmistakable while leaving each list internally compact",
+      "evidence": ["128px spacing appears five times", "List rhythm uses 12px", "Only one 116px measured section gap in rendered blocks"]
+    },
+    {
+      "name": "Two weights do all semantic work",
+      "trigger": "When names, labels and descriptions required distinction",
+      "decision": "Chose one 16px family in weights 400 and 500 over a display face and multi-step heading scale",
+      "reason": "Visitors can scan the information as a personal record rather than as a campaign page",
+      "evidence": ["Sans is the only detected family", "16px occurs 41 times", "Weights 400 and 500 are the only detected weights"]
+    },
+    {
+      "name": "Color stays out of the argument",
+      "trigger": "When links and projects could have received individual accent colors",
+      "decision": "Chose #21201C and #63635E text on #FDFDFC over a branded accent palette",
+      "reason": "The hierarchy comes from language, order and spacing, so no project gains importance merely through color",
+      "evidence": ["#FFFFFF accounts for 88.7% of measured background area", "Only two text colors appear repeatedly", "No colored accent candidate was detected"]
+    }
+  ]
+}
