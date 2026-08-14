@@ -1,5 +1,7 @@
 # Leon Westermeir — Engineering Portfolio
 
+[![CI](https://github.com/leonwwest/leon-westermeir-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/leonwwest/leon-westermeir-portfolio/actions/workflows/ci.yml)
+
 Personal portfolio for Microsoft, Infrastructure, Cloud and Automation roles. The site presents a privately operated Work OS and five reproducible engineering labs as inspectable systems: real captures, test counts, technical decisions, public repositories and explicit production boundaries.
 
 ## Design direction
@@ -28,6 +30,8 @@ npm run build
 ```
 
 The test command creates the Sites/Vinext build and verifies the server-rendered portfolio and legal routes. `npm run build` validates the Next.js production path used by the custom Vercel domain.
+
+Every push to `main` and every pull request runs a clean install, lint, the Next.js production build and the rendered-route test suite in GitHub Actions.
 
 ## Public surface
 
