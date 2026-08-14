@@ -780,27 +780,6 @@ footer nav {
   justify-self: end;
 }
 
-@keyframes intro-rise {
-  from {
-    opacity: 0;
-    transform: translateY(1.4rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hero-copy {
-    animation: intro-rise 720ms var(--ease-out) both;
-  }
-
-  .dispatch-card {
-    animation: intro-rise 720ms 100ms var(--ease-out) both;
-  }
-}
-
 @media (hover: hover) and (pointer: fine) {
   .site-header nav a:hover::after,
   footer nav a:hover::after,
@@ -1051,13 +1030,6 @@ footer nav {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .hero-copy,
-  .dispatch-card {
-    animation: none;
-    opacity: 1;
-    transform: none;
   }
 
   .motion-demo {
