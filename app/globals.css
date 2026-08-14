@@ -158,7 +158,6 @@ footer nav a::after,
 
 .hero-copy {
   max-width: 58rem;
-  animation: intro-rise 720ms var(--ease-out) both;
 }
 
 .eyebrow,
@@ -252,7 +251,42 @@ h1 {
   border: 1px solid var(--ink);
   background: var(--paper-bright);
   box-shadow: 10px 10px 0 var(--ink);
-  animation: intro-rise 720ms 100ms var(--ease-out) both;
+}
+
+.experience-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.experience-strip div {
+  min-height: 7.5rem;
+  padding: 1.35rem var(--page-gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  border-right: 1px solid var(--line);
+}
+
+.experience-strip div:last-child {
+  border-right: 0;
+}
+
+.experience-strip span,
+.private-project-note {
+  color: var(--muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.experience-strip strong {
+  max-width: 24rem;
+  font-size: 1rem;
+  line-height: 1.35;
 }
 
 .dispatch-head,
@@ -487,7 +521,7 @@ h1 {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .still-demo {
@@ -544,6 +578,12 @@ h1 {
 
 .repo-link {
   color: var(--signal-dark);
+}
+
+.private-project-note {
+  margin: 0;
+  color: var(--signal-dark);
+  font-weight: 700;
 }
 
 .workflow-section {
@@ -751,6 +791,16 @@ footer nav {
   }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy {
+    animation: intro-rise 720ms var(--ease-out) both;
+  }
+
+  .dispatch-card {
+    animation: intro-rise 720ms 100ms var(--ease-out) both;
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .site-header nav a:hover::after,
   footer nav a:hover::after,
@@ -807,6 +857,18 @@ footer nav {
 
   .workflow-list {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .experience-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .experience-strip div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .experience-strip div:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
   }
 
   .workflow-list li {
@@ -873,6 +935,21 @@ footer nav {
   .dispatch-head,
   .dispatch-foot {
     font-size: 0.64rem;
+  }
+
+  .experience-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-strip div,
+  .experience-strip div:nth-child(2) {
+    min-height: 6.5rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .experience-strip div:last-child {
+    border-bottom: 0;
   }
 
   .section-heading {
@@ -976,12 +1053,11 @@ footer nav {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  .hero-copy,
+  .dispatch-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 
   .motion-demo {
