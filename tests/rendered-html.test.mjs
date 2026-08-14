@@ -22,8 +22,10 @@ test("server-renders the portfolio and its evidence path", async () => {
   assert.match(html, /<html[^>]+lang="de"/i);
   assert.match(html, /Leon Westermeir/);
   assert.match(html, /Ich baue Systeme/);
+  assert.match(html, /Leon Work OS/);
   assert.match(html, /Azure Platform IaC/);
-  assert.match(html, /57/);
+  assert.match(html, /57\+/);
+  assert.match(html, /Microsoft 365/);
   assert.match(html, /Keine erfundene/);
   assert.match(html, /leon\.westermeir@ibmw-engineering\.com/);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton|codex-preview/i);

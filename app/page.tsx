@@ -15,14 +15,33 @@ type Project = {
   image: string;
   still: string;
   imageAlt: string;
-  repo: string;
+  repo?: string;
+  linkLabel?: string;
+  status: string;
   tests: string;
 };
 
 const projects: Project[] = [
   {
-    id: "azure-platform",
+    id: "leon-work-os",
     number: "01",
+    title: "Leon Work OS",
+    role: "Systems automation",
+    purpose: "Aufgaben, Freigaben und Wiederanlauf auf meiner eigenen Infrastruktur steuern.",
+    result:
+      "Ein privates Operator-System verbindet Task Registry, Mac-Worker und Hermes. Guardrails, Checkpoints, Backups und Runbooks halten Automatisierung nachvollziehbar und stoppen externe Aktionen an klaren Freigabegrenzen.",
+    evidence: "Laufender Eigenbetrieb · verifizierte Recovery- und Guardrail-Abläufe",
+    stack: ["Python", "SQLite", "macOS", "Linux", "Automation"],
+    image: "/projects/leon-work-os.png",
+    still: "/projects/leon-work-os.png",
+    imageAlt: "Operator-Dashboard des privat betriebenen Leon Work OS",
+    linkLabel: "Privates Repository · Architektur im Gespräch",
+    status: "Betrieb",
+    tests: "LIVE / PRIVAT",
+  },
+  {
+    id: "azure-platform",
+    number: "02",
     title: "Azure Platform IaC",
     role: "Cloud foundation",
     purpose: "Eine prüfbare Azure-Basis ohne dauerhafte Zugangsdaten.",
@@ -34,11 +53,12 @@ const projects: Project[] = [
     still: "/projects/azure-platform.png",
     imageAlt: "Terminaldemo des Azure Platform Infrastructure-as-Code Labs",
     repo: "https://github.com/leonwwest/azure-platform-iac-lab",
+    status: "Geprüft",
     tests: "06 / 06",
   },
   {
     id: "m365-automation",
-    number: "02",
+    number: "03",
     title: "M365 Governance Automation",
     role: "Safe operations",
     purpose: "Bestände prüfen, Abweichungen erklären, Änderungen freigeben.",
@@ -50,11 +70,12 @@ const projects: Project[] = [
     still: "/projects/m365-automation.png",
     imageAlt: "Terminaldemo der Microsoft 365 Governance Automation",
     repo: "https://github.com/leonwwest/azure-m365-automation-lab",
+    status: "Geprüft",
     tests: "07 / 07",
   },
   {
     id: "gitops-platform",
-    number: "03",
+    number: "04",
     title: "GitOps Platform Lab",
     role: "Platform engineering",
     purpose: "Clusterzustand aus Git reproduzierbar machen und messen.",
@@ -66,11 +87,12 @@ const projects: Project[] = [
     still: "/projects/gitops-platform.png",
     imageAlt: "Terminaldemo des Kubernetes GitOps Platform Labs",
     repo: "https://github.com/leonwwest/gitops-platform-lab",
+    status: "Geprüft",
     tests: "14 / 14",
   },
   {
     id: "incident-response",
-    number: "04",
+    number: "05",
     title: "Incident Response Lab",
     role: "Observability",
     purpose: "Langsame Anwendungen eingrenzen, bevor Aktionismus entsteht.",
@@ -82,11 +104,12 @@ const projects: Project[] = [
     still: "/projects/incident-response.png",
     imageAlt: "Terminaldemo eines beobachtbaren Incident-Response-Szenarios",
     repo: "https://github.com/leonwwest/slow-ai-app-incident-lab",
+    status: "Geprüft",
     tests: "03 / 03",
   },
   {
     id: "data-quality",
-    number: "05",
+    number: "06",
     title: "Operations Data Quality",
     role: "Automation & data",
     purpose: "Fehlerhafte Betriebsdaten stoppen, bevor KPIs falsch werden.",
@@ -98,6 +121,7 @@ const projects: Project[] = [
     still: "/projects/data-quality.png",
     imageAlt: "Terminaldemo der Operations Data Quality Pipeline",
     repo: "https://github.com/leonwwest/operations-kpi-automation-demo",
+    status: "Geprüft",
     tests: "27 / 27",
   },
 ];
@@ -147,10 +171,10 @@ export default function Home() {
       <main id="main">
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="eyebrow"><span className="signal-dot" /> Bereit für Cloud · Platform · Automation</p>
+            <p className="eyebrow"><span className="signal-dot" /> Microsoft · Infrastruktur · Cloud · Automation</p>
             <h1 id="hero-title">Ich baue Systeme,<br />die man prüfen kann.</h1>
             <p className="hero-intro">
-              Ich bin Leon – System Engineer mit Support-Wurzeln und einem klaren Ziel: raus aus dem reaktiven Betrieb, hinein in Cloud Engineering und Automation. Neue Themen erschließe ich schnell und mache den Lernfortschritt als funktionierenden Code sichtbar.
+              Ich bin Leon – ausgebildeter Fachinformatiker Systemintegration und B.Sc. International Information Systems. Ich arbeite mit Microsoft 365, Entra ID, Windows-Infrastruktur, Netzwerk und Security und automatisiere wiederkehrende Abläufe mit PowerShell und Python.
             </p>
             <div className="hero-actions">
               <a className="primary-action" href="#projekte">Arbeit ansehen <span aria-hidden="true">↓</span></a>
@@ -161,15 +185,15 @@ export default function Home() {
           <div className="dispatch-card" aria-label="Aktueller Projektstatus">
             <div className="dispatch-head">
               <span>Engineering dispatch</span>
-              <span>06.08.2026 · DE</span>
+              <span>14.08.2026 · DE</span>
             </div>
             <div className="dispatch-main">
               <p className="dispatch-label">Aktiver Prüfbereich</p>
-              <p className="dispatch-value">Cloud foundations<br />&amp; safe automation</p>
+              <p className="dispatch-value">Microsoft systems<br />&amp; safe automation</p>
               <dl className="dispatch-metrics">
-                <div><dt>Labs</dt><dd>05</dd></div>
-                <div><dt>Tests</dt><dd>57</dd></div>
-                <div><dt>Status</dt><dd className="status-pass">PASS</dd></div>
+                <div><dt>Systeme</dt><dd>06</dd></div>
+                <div><dt>Prüfungen</dt><dd>57+</dd></div>
+                <div><dt>Status</dt><dd className="status-pass">AKTIV</dd></div>
               </dl>
             </div>
             <div className="dispatch-foot">
@@ -179,12 +203,19 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="experience-strip" aria-label="Qualifikation und technische Praxis">
+          <div><span>Ausbildung</span><strong>Fachinformatiker Systemintegration</strong></div>
+          <div><span>Studium</span><strong>B.Sc. International Information Systems</strong></div>
+          <div><span>Praxis</span><strong>M365 · Entra · Windows · Netzwerk/Security</strong></div>
+          <div><span>Automation</span><strong>PowerShell · Python</strong></div>
+        </section>
+
         <section className="project-section" id="projekte" aria-labelledby="projects-title">
           <div className="section-heading">
             <p className="section-index">01 / Ausgewählte Systeme</p>
             <div>
-              <h2 id="projects-title">Fünf Projekte.<br />Jedes davon läuft.</h2>
-              <p>Wähle einen Auftrag aus. Rechts siehst du keine Illustration, sondern die echte Demo aus dem Repository.</p>
+              <h2 id="projects-title">Sechs Systeme.<br />Belegbar statt behauptet.</h2>
+              <p>Wähle ein Projekt aus. Öffentliche Labs führen direkt zu Code und Runbook; beim privat betriebenen Work OS bleibt das Repository geschützt.</p>
             </div>
           </div>
 
@@ -205,7 +236,7 @@ export default function Home() {
                       <strong>{project.title}</strong>
                       <small>{project.purpose}</small>
                     </span>
-                    <span className="row-status"><span className="signal-dot" /> Pass</span>
+                    <span className="row-status"><span className="signal-dot" /> {project.status}</span>
                     <span className="row-arrow" aria-hidden="true">{selected ? "→" : "↗"}</span>
                   </button>
                 );
@@ -218,8 +249,8 @@ export default function Home() {
                 <span>TEST {active.tests}</span>
               </div>
               <div className="demo-frame">
-                <Image className="motion-demo" key={active.image} src={active.image} alt={active.imageAlt} width={1280} height={720} unoptimized />
-                <Image className="still-demo" key={active.still} src={active.still} alt={active.imageAlt} width={1280} height={640} />
+                <Image className="motion-demo" key={`motion-${active.image}`} src={active.image} alt={active.imageAlt} width={1280} height={720} unoptimized />
+                <Image className="still-demo" key={`still-${active.still}`} src={active.still} alt={active.imageAlt} width={1280} height={640} />
               </div>
               <div className="inspection-copy">
                 <p className="inspection-kicker">Was hier gelöst wird</p>
@@ -229,7 +260,11 @@ export default function Home() {
                 <ul className="stack-list" aria-label="Technologien">
                   {active.stack.map((item) => <li key={item}>{item}</li>)}
                 </ul>
-                <a className="repo-link" href={active.repo} target="_blank" rel="noreferrer">Repository und Runbook öffnen ↗</a>
+                {active.repo ? (
+                  <a className="repo-link" href={active.repo} target="_blank" rel="noreferrer">Repository und Runbook öffnen ↗</a>
+                ) : (
+                  <p className="private-project-note">{active.linkLabel}</p>
+                )}
               </div>
             </article>
           </div>
@@ -263,11 +298,11 @@ export default function Home() {
           </div>
           <div className="proof-grid">
             <div className="proof-statement">
-              <p>Die gezeigten Systeme sind reproduzierbare Labs. Sie belegen, wie ich Architektur, Automation, Tests und Dokumentation angehe – nicht, dass sie bereits in fremden Produktivumgebungen liefen.</p>
+              <p>Die öffentlichen Projekte sind reproduzierbare Labs. Leon Work OS läuft privat auf meiner eigenen Infrastruktur. Beides zeigt meine Arbeitsweise, ersetzt aber keine Verantwortung für fremde Produktivumgebungen.</p>
             </div>
             <dl className="proof-facts">
-              <div><dt>Heute</dt><dd>System Engineering &amp; Support</dd></div>
-              <div><dt>Nächster Schritt</dt><dd>Cloud, Platform oder Automation</dd></div>
+              <div><dt>Heute</dt><dd>System Engineering, Support &amp; Automation</dd></div>
+              <div><dt>Nächster Schritt</dt><dd>Microsoft-, Infrastruktur- oder Cloud-Rolle</dd></div>
               <div><dt>Arbeitsort</dt><dd>Raum Augsburg / München · Remote</dd></div>
               <div><dt>Sprachen</dt><dd>Deutsch · Englisch</dd></div>
             </dl>

@@ -1,6 +1,6 @@
 # Leon Westermeir — Engineering Portfolio
 
-Personal portfolio for Cloud, Platform and Automation roles. The site presents five reproducible engineering labs as inspectable systems: real terminal demos, test counts, technical decisions, public repositories and explicit production boundaries.
+Personal portfolio for Microsoft, Infrastructure, Cloud and Automation roles. The site presents a privately operated Work OS and five reproducible engineering labs as inspectable systems: real captures, test counts, technical decisions, public repositories and explicit production boundaries.
 
 ## Design direction
 
@@ -37,4 +37,4 @@ The test command creates the Sites/Vinext build and verifies the server-rendered
 
 ## Accuracy
 
-The five featured systems are reproducible labs. They show an engineering approach to architecture, automation, tests and operational handover; they are not presented as deployments in third-party production environments.
+The five public systems are reproducible labs. Leon Work OS is privately operated on personal infrastructure. Both show an engineering approach to architecture, automation, tests and operational handover; neither is presented as a deployment in a third-party production environment.
