@@ -11,6 +11,8 @@ type Project = {
   purpose: string;
   result: string;
   evidence: string;
+  decision: string;
+  boundary: string;
   stack: string[];
   image: string;
   still: string;
@@ -19,25 +21,28 @@ type Project = {
   linkLabel?: string;
   status: string;
   tests: string;
+  proof?: string;
 };
 
 const projects: Project[] = [
   {
-    id: "leon-work-os",
+    id: "m365-automation",
     number: "01",
-    title: "Leon Work OS",
-    role: "Systems automation",
-    purpose: "Aufgaben, Freigaben und Wiederanlauf auf meiner eigenen Infrastruktur steuern.",
+    title: "Azure & Microsoft 365 Tenant Guard",
+    role: "Safe operations",
+    purpose: "Bestände prüfen, Abweichungen erklären und Änderungen kontrolliert freigeben.",
     result:
-      "Ein privates Operator-System verbindet Task Registry, Mac-Worker und Hermes. Guardrails, Checkpoints, Backups und Runbooks halten Automatisierung nachvollziehbar und stoppen externe Aktionen an klaren Freigabegrenzen.",
-    evidence: "Laufender Eigenbetrieb · verifizierte Recovery- und Guardrail-Abläufe",
-    stack: ["Python", "SQLite", "macOS", "Linux", "Automation"],
-    image: "/projects/leon-work-os.png",
-    still: "/projects/leon-work-os.png",
-    imageAlt: "Operator-Dashboard des privat betriebenen Leon Work OS",
-    linkLabel: "Privates Repository · Architektur im Gespräch",
-    status: "Betrieb",
-    tests: "LIVE / PRIVAT",
+      "Python und PowerShell erzeugen aus einem reproduzierbaren Inventar denselben Governance-Report. Remediation bleibt bis zur expliziten Freigabe im Dry Run.",
+    evidence: "11 Tests · 11 deterministische Findings · Release v1.2.0",
+    decision: "Inventar, Bewertung und Remediation sind getrennte Schritte.",
+    boundary: "Die öffentliche Demo nutzt synthetische Tenant-Daten und führt keine Änderungen aus.",
+    stack: ["PowerShell", "Python", "Microsoft Graph", "GitHub Actions"],
+    image: "/projects/m365-automation-demo.gif",
+    still: "/projects/m365-automation.png",
+    imageAlt: "Terminaldemo des Azure und Microsoft 365 Tenant Guard",
+    repo: "https://github.com/leonwwest/azure-m365-automation-lab",
+    status: "v1.2.0",
+    tests: "11 / 11",
   },
   {
     id: "azure-platform",
@@ -47,82 +52,74 @@ const projects: Project[] = [
     purpose: "Eine prüfbare Azure-Basis ohne dauerhafte Zugangsdaten.",
     result:
       "Terraform provisioniert Container Apps, Key Vault, Monitoring und kostenbewusste Leitplanken. GitHub Actions authentifiziert sich per OIDC.",
-    evidence: "17 Checkov-Prüfungen bestanden · 6 Contract Tests",
+    evidence: "13 automatisierte Tests · AzureRM v5 Contract · Release v1.1.0",
+    decision: "GitHub Actions authentifiziert sich kurzlebig per OIDC statt mit gespeicherten Cloud-Secrets.",
+    boundary: "Das öffentliche Evidence-Paket belegt lokale Planung und Verträge, nicht dauerhaft betriebene Azure-Ressourcen.",
     stack: ["Terraform", "Azure", "OIDC", "GitHub Actions"],
     image: "/projects/azure-platform-demo.gif",
     still: "/projects/azure-platform.png",
     imageAlt: "Terminaldemo des Azure Platform Infrastructure-as-Code Labs",
     repo: "https://github.com/leonwwest/azure-platform-iac-lab",
-    status: "Geprüft",
-    tests: "06 / 06",
-  },
-  {
-    id: "m365-automation",
-    number: "03",
-    title: "M365 Governance Automation",
-    role: "Safe operations",
-    purpose: "Bestände prüfen, Abweichungen erklären, Änderungen freigeben.",
-    result:
-      "Die Pipeline trennt Inventarisierung, Governance-Nachweise und Remediation. Änderungen bleiben bis zur expliziten Freigabe im Dry Run.",
-    evidence: "7 automatisierte Tests · nachvollziehbarer Evidence Export",
-    stack: ["PowerShell", "Microsoft Graph", "CI", "Governance"],
-    image: "/projects/m365-automation-demo.gif",
-    still: "/projects/m365-automation.png",
-    imageAlt: "Terminaldemo der Microsoft 365 Governance Automation",
-    repo: "https://github.com/leonwwest/azure-m365-automation-lab",
-    status: "Geprüft",
-    tests: "07 / 07",
+    status: "v1.1.0",
+    tests: "13 / 13",
   },
   {
     id: "gitops-platform",
-    number: "04",
+    number: "03",
     title: "GitOps Platform Lab",
     role: "Platform engineering",
-    purpose: "Clusterzustand aus Git reproduzierbar machen und messen.",
+    purpose: "Clusterzustand aus Git reproduzierbar machen, messen und wiederherstellen.",
     result:
-      "Argo CD und Kustomize halten den gewünschten Zustand synchron. Policies, SLOs und ein Recovery-Ablauf machen Fehler sichtbar und behebbar.",
-    evidence: "14 Tests · dokumentierter Drift- und Recovery-Ablauf",
+      "Argo CD und Kustomize halten den gewünschten Zustand synchron. Policies, SLOs und ein Burn-Rate-Recovery-Ablauf machen Drift sichtbar und behebbar.",
+    evidence: "18 Tests · drei Overlays · Release v1.2.0",
+    decision: "Ein gemeinsamer Basiszustand wird durch kleine, prüfbare Umgebungs-Overlays erweitert.",
+    boundary: "Das Lab läuft lokal und dokumentiert Betriebsmechanik; es ist kein fremdes Produktionscluster.",
     stack: ["Kubernetes", "Argo CD", "Kustomize", "Prometheus"],
     image: "/projects/gitops-platform-demo.gif",
     still: "/projects/gitops-platform.png",
     imageAlt: "Terminaldemo des Kubernetes GitOps Platform Labs",
     repo: "https://github.com/leonwwest/gitops-platform-lab",
-    status: "Geprüft",
-    tests: "14 / 14",
+    status: "v1.2.0",
+    tests: "18 / 18",
   },
   {
-    id: "incident-response",
+    id: "leon-work-os",
+    number: "04",
+    title: "Leon Work OS",
+    role: "Systems automation",
+    purpose: "Aufgaben, Freigaben und Wiederanlauf auf eigener Infrastruktur steuern.",
+    result:
+      "Task Registry, Mac-Worker und Hermes bilden einen privaten Control Plane. Guardrails, Checkpoints, verschlüsselte Backups und Restore-Drills halten die Automation nachvollziehbar.",
+    evidence: "20 SQLite-Datenbanken geprüft · 2.898 Archivobjekte · Restore-Validierung 5,96 s",
+    decision: "Jede externe Wirkung braucht eine explizite Freigabe; read-only Prüfungen bleiben automatisierbar.",
+    boundary: "Repository und Betriebsdaten bleiben privat; veröffentlicht werden nur sanitisierte Prüfwerte.",
+    stack: ["Python", "SQLite", "macOS", "Linux", "systemd"],
+    image: "/projects/leon-work-os.png",
+    still: "/projects/leon-work-os.png",
+    imageAlt: "Operator-Dashboard des privat betriebenen Leon Work OS",
+    linkLabel: "Sanitisierte Architektur und Recovery-Nachweise öffnen →",
+    proof: "/work-os-evidence",
+    status: "Betrieb",
+    tests: "15.08.2026",
+  },
+  {
+    id: "cloudscrobble",
     number: "05",
-    title: "Incident Response Lab",
-    role: "Observability",
-    purpose: "Langsame Anwendungen eingrenzen, bevor Aktionismus entsteht.",
+    title: "CloudScrobble",
+    role: "Product engineering",
+    purpose: "Musikwiedergabe zuverlässig erfassen, auch wenn Netz oder Zugangsdaten ausfallen.",
     result:
-      "Metriken, Logs und Traces fließen in eine erklärbare SEV-Einstufung. Vorgeschlagene Maßnahmen bleiben standardmäßig sicher im Dry Run.",
-    evidence: "3 Tests · reproduzierbares Slow-App-Szenario",
-    stack: ["FastAPI", "OpenTelemetry", "Grafana", "Loki"],
-    image: "/projects/incident-response-demo.gif",
-    still: "/projects/incident-response.png",
-    imageAlt: "Terminaldemo eines beobachtbaren Incident-Response-Szenarios",
-    repo: "https://github.com/leonwwest/slow-ai-app-incident-lab",
-    status: "Geprüft",
-    tests: "03 / 03",
-  },
-  {
-    id: "data-quality",
-    number: "06",
-    title: "Operations Data Quality",
-    role: "Automation & data",
-    purpose: "Fehlerhafte Betriebsdaten stoppen, bevor KPIs falsch werden.",
-    result:
-      "Ein versionierter Datenvertrag, Quality Gates, Quarantäne und Lineage machen den ETL-Lauf prüfbar. Die API liefert nur freigegebene Kennzahlen aus.",
-    evidence: "27 Tests · Quality Report und Quarantäne-Nachweis",
-    stack: ["Python", "FastAPI", "Power BI", "n8n"],
-    image: "/projects/data-quality-demo.gif",
-    still: "/projects/data-quality.png",
-    imageAlt: "Terminaldemo der Operations Data Quality Pipeline",
-    repo: "https://github.com/leonwwest/operations-kpi-automation-demo",
-    status: "Geprüft",
-    tests: "27 / 27",
+      "Die iOS-App puffert Scrobbles offline, schützt Tokens im Keychain und delegiert serverseitige Aufgaben an einen kleinen Go- und Worker-Stack.",
+    evidence: "90 Swift-Tests · fünf CI-Jobs · Release v0.1.0",
+    decision: "Eine lokale Queue entkoppelt die Wiedergabe vom Netzwerk und macht Wiederholungen kontrollierbar.",
+    boundary: "Der öffentliche Stand belegt Architektur und Build; eine Store-Veröffentlichung wird nicht behauptet.",
+    stack: ["Swift", "SwiftUI", "Go", "Cloudflare Workers"],
+    image: "/projects/cloudscrobble.png",
+    still: "/projects/cloudscrobble.png",
+    imageAlt: "Echte iOS-Oberfläche von CloudScrobble im Demo-Modus",
+    repo: "https://github.com/leonwwest/cloudscrobble-ios",
+    status: "v0.1.0",
+    tests: "90 TESTS",
   },
 ];
 
@@ -185,20 +182,20 @@ export default function Home() {
           <div className="dispatch-card" aria-label="Aktueller Projektstatus">
             <div className="dispatch-head">
               <span>Engineering dispatch</span>
-              <span>14.08.2026 · DE</span>
+              <span>15.08.2026 · DE</span>
             </div>
             <div className="dispatch-main">
               <p className="dispatch-label">Aktiver Prüfbereich</p>
               <p className="dispatch-value">Microsoft systems<br />&amp; safe automation</p>
               <dl className="dispatch-metrics">
-                <div><dt>Systeme</dt><dd>06</dd></div>
-                <div><dt>Prüfungen</dt><dd>57+</dd></div>
+                <div><dt>Kernsysteme</dt><dd>05</dd></div>
+                <div><dt>Releases</dt><dd>04</dd></div>
                 <div><dt>Status</dt><dd className="status-pass">AKTIV</dd></div>
               </dl>
             </div>
             <div className="dispatch-foot">
               <span>Belege: Code · Tests · Runbooks</span>
-              <span aria-hidden="true">LW—57</span>
+              <span aria-hidden="true">LW—05</span>
             </div>
           </div>
         </section>
@@ -214,8 +211,8 @@ export default function Home() {
           <div className="section-heading">
             <p className="section-index">01 / Ausgewählte Systeme</p>
             <div>
-              <h2 id="projects-title">Sechs Systeme.<br />Belegbar statt behauptet.</h2>
-              <p>Wähle ein Projekt aus. Öffentliche Labs führen direkt zu Code und Runbook; beim privat betriebenen Work OS bleibt das Repository geschützt.</p>
+              <h2 id="projects-title">Fünf Kernsysteme.<br />Entscheidung und Beleg.</h2>
+              <p>Jedes Projekt zeigt Problem, technische Entscheidung, überprüfbaren Nachweis und eine klare Grenze. Öffentliche Systeme führen direkt zum Code.</p>
             </div>
           </div>
 
@@ -256,12 +253,18 @@ export default function Home() {
                 <p className="inspection-kicker">Was hier gelöst wird</p>
                 <h3>{active.purpose}</h3>
                 <p>{active.result}</p>
-                <p className="evidence-line"><span aria-hidden="true">✓</span> {active.evidence}</p>
+                <dl className="evidence-facts">
+                  <div><dt>Entscheidung</dt><dd>{active.decision}</dd></div>
+                  <div><dt>Nachweis</dt><dd>{active.evidence}</dd></div>
+                  <div><dt>Grenze</dt><dd>{active.boundary}</dd></div>
+                </dl>
                 <ul className="stack-list" aria-label="Technologien">
                   {active.stack.map((item) => <li key={item}>{item}</li>)}
                 </ul>
                 {active.repo ? (
                   <a className="repo-link" href={active.repo} target="_blank" rel="noreferrer">Repository und Runbook öffnen ↗</a>
+                ) : active.proof ? (
+                  <a className="repo-link" href={active.proof}>{active.linkLabel}</a>
                 ) : (
                   <p className="private-project-note">{active.linkLabel}</p>
                 )}
@@ -293,12 +296,12 @@ export default function Home() {
           <div className="section-heading">
             <p className="section-index">03 / Einordnung</p>
             <div>
-              <h2 id="proof-title">Keine erfundene<br />Produktions<wbr />erfahrung.</h2>
+              <h2 id="proof-title">Was die Nachweise<br />wirklich abdecken.</h2>
             </div>
           </div>
           <div className="proof-grid">
             <div className="proof-statement">
-              <p>Die öffentlichen Projekte sind reproduzierbare Labs. Leon Work OS läuft privat auf meiner eigenen Infrastruktur. Beides zeigt meine Arbeitsweise, ersetzt aber keine Verantwortung für fremde Produktivumgebungen.</p>
+              <p>Die öffentlichen Labs belegen reproduzierbare Engineering-Abläufe. Leon Work OS ergänzt reale Eigenbetriebsdaten. Claims bleiben so präzise wie die zugänglichen Belege.</p>
             </div>
             <dl className="proof-facts">
               <div><dt>Heute</dt><dd>System Engineering, Support &amp; Automation</dd></div>
@@ -313,9 +316,9 @@ export default function Home() {
           <p className="section-index">04 / Weitere Arbeit</p>
           <h2 id="more-title">Außerdem gebaut</h2>
           <div className="more-list">
-            <a href="https://whatsapp-school-assistant-demo.vercel.app" target="_blank" rel="noreferrer"><span>WhatsApp School Assistant</span><small>Workflow-Demo · Live ansehen</small><b>↗</b></a>
-            <a href="https://github.com/leonwwest/cloudscrobble-ios" target="_blank" rel="noreferrer"><span>CloudScrobble</span><small>Native iOS App</small><b>↗</b></a>
-            <a href="https://github.com/leonwwest/repo-audio-summary" target="_blank" rel="noreferrer"><span>Repository Audio Summary</span><small>Developer Tooling</small><b>↗</b></a>
+            <a href="https://github.com/leonwwest/operations-kpi-automation-demo" target="_blank" rel="noreferrer"><span>Operations Data Quality</span><small>Python · API · Power BI</small><b>↗</b></a>
+            <a href="https://github.com/leonwwest/ludo_club" target="_blank" rel="noreferrer"><span>Board Magic</span><small>Flutter · langlebige Produktentwicklung</small><b>↗</b></a>
+            <a href="https://github.com/leonwwest/slow-ai-app-incident-lab" target="_blank" rel="noreferrer"><span>Incident Automation Lab</span><small>OpenTelemetry · erklärbare Triage</small><b>↗</b></a>
           </div>
         </section>
 
