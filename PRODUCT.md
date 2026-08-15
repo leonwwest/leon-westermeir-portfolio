@@ -30,7 +30,7 @@ Leon does not present a list of tools as expertise. He shows small, reproducible
 
 ## Capabilities and Constraints
 
-- Present five core engineering labs plus selected additional work.
+- Present five distinct core systems plus selected additional work.
 - Link every technical claim to a public repository or a real captured run where possible.
 - Include an immediate email contact path and GitHub profile path.
 - Explain that portfolio labs are reproducible demonstrations, not claims of operating real customer tenants or production clusters.
@@ -48,10 +48,10 @@ Leon does not present a list of tools as expertise. He shows small, reproducible
 
 ## Evidence on Hand
 
-- Five core public repositories with README documentation, CI, security checks, tests, release tags, architecture material, social cards and real terminal demo captures.
-- Core repositories: Azure Platform IaC Lab, Azure & M365 Tenant Guard, GitOps Platform Lab, Incident Automation Lab and Data Quality Pipeline.
-- Additional public work includes CloudScrobble iOS, WhatsApp School Assistant and Repo Audio Summary.
-- The five core labs currently contain 57 local automated tests in total.
+- Four core public repositories with README documentation, CI, tests, release tags and real execution evidence, plus the privately operated Leon Work OS.
+- Core systems: Azure & Microsoft 365 Tenant Guard, Azure Platform IaC, GitOps Platform Lab, Leon Work OS and CloudScrobble.
+- Additional public work includes Operations Data Quality, Board Magic and Incident Automation Lab.
+- Published test counts stay per project instead of being combined into a context-free vanity total.
 - No testimonials, customer logos or production-client claims are available and none may be invented.
 
 ## Product Principles

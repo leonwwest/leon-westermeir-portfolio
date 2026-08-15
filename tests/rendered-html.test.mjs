@@ -24,11 +24,26 @@ test("server-renders the portfolio and its evidence path", async () => {
   assert.match(html, /Ich baue Systeme/);
   assert.match(html, /Leon Work OS/);
   assert.match(html, /Azure Platform IaC/);
-  assert.match(html, /57\+/);
+  assert.match(html, /Fünf Kernsysteme/);
+  assert.match(html, /CloudScrobble/);
+  assert.match(html, /v1\.2\.0/);
+  assert.match(html, /Entscheidung/);
   assert.match(html, /Microsoft 365/);
-  assert.match(html, /Keine erfundene/);
+  assert.match(html, /Was die Nachweise/);
+  assert.doesNotMatch(html, /57\+|Sechs Systeme|Keine erfundene/);
   assert.match(html, /leon\.westermeir@ibmw-engineering\.com/);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton|codex-preview/i);
+});
+
+test("server-renders the sanitized Work OS evidence route", async () => {
+  const response = await render("/work-os-evidence");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Restore-Drill/);
+  assert.match(html, /20 \/ 20/);
+  assert.match(html, /2\.898/);
+  assert.match(html, /kein[\s\S]*Produktions-RTO/i);
+  assert.doesNotMatch(html, /tailscale|vps-|sha256|\/var\/lib/i);
 });
 
 test("server-renders both legal routes", async () => {
