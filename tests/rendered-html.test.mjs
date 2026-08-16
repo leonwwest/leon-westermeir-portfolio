@@ -32,6 +32,9 @@ test("server-renders the portfolio and its evidence path", async () => {
   assert.match(html, /Was die Nachweise/);
   assert.doesNotMatch(html, /57\+|Sechs Systeme|Keine erfundene/);
   assert.match(html, /leon\.westermeir@ibmw-engineering\.com/);
+  assert.match(html, /href="\/Leon_Westermeir_Lebenslauf\.pdf"/);
+  assert.match(html, /github\.com\/leonwwest\/ludo-club/);
+  assert.doesNotMatch(html, /github\.com\/leonwwest\/ludo_club/);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton|codex-preview/i);
 });
 
