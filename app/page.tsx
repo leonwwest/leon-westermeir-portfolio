@@ -16,6 +16,7 @@ type Project = {
   stack: string[];
   image: string;
   still: string;
+  video?: string;
   imageAlt: string;
   repo?: string;
   linkLabel?: string;
@@ -116,6 +117,7 @@ const projects: Project[] = [
     stack: ["Swift", "SwiftUI", "Go", "Cloudflare Workers"],
     image: "/projects/cloudscrobble.png",
     still: "/projects/cloudscrobble.png",
+    video: "/projects/cloudscrobble-demo.mp4",
     imageAlt: "Echte iOS-Oberfläche von CloudScrobble im Demo-Modus",
     repo: "https://github.com/leonwwest/cloudscrobble-ios",
     status: "v0.1.0",
@@ -247,7 +249,23 @@ export default function Home() {
                 <span>TEST {active.tests}</span>
               </div>
               <div className="demo-frame">
-                <Image className="motion-demo" key={`motion-${active.image}`} src={active.image} alt={active.imageAlt} width={1280} height={720} unoptimized />
+                {active.video ? (
+                  <video
+                    className="motion-demo product-video"
+                    key={`motion-${active.video}`}
+                    src={active.video}
+                    poster={active.still}
+                    aria-label={active.imageAlt}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    controls
+                  />
+                ) : (
+                  <Image className="motion-demo" key={`motion-${active.image}`} src={active.image} alt={active.imageAlt} width={1280} height={720} unoptimized />
+                )}
                 <Image className="still-demo" key={`still-${active.still}`} src={active.still} alt={active.imageAlt} width={1280} height={640} />
               </div>
               <div className="inspection-copy">
