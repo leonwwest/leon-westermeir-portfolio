@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Leon Westermeir",
     title: "Leon Westermeir — Microsoft, Infrastructure & Automation",
     description: "Prüfbare Microsoft-, Infrastruktur-, Cloud- und Automationsprojekte: Praxis, Code, Tests und Runbooks.",
-    images: [{ url: "/projects/azure-platform.png", width: 1280, height: 640, alt: "Leon Westermeir – Cloud Platform Engineering Portfolio" }],
+    images: [{ url: "/social-preview.png", width: 1280, height: 640, alt: "Leon Westermeir – Microsoft, Infrastructure & Automation" }],
   },
   robots: { index: true, follow: true },
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },

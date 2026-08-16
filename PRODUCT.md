@@ -33,6 +33,7 @@ Leon does not present a list of tools as expertise. He shows small, reproducible
 - Present five distinct core systems plus selected additional work.
 - Link every technical claim to a public repository or a real captured run where possible.
 - Include an immediate email contact path and GitHub profile path.
+- Offer a concise public CV without private address or phone details.
 - Explain that portfolio labs are reproducible demonstrations, not claims of operating real customer tenants or production clusters.
 - Do not fabricate customers, testimonials, production usage, employer endorsements or deployment scale.
 - No LinkedIn account is available or required.

@@ -175,6 +175,7 @@ export default function Home() {
             </p>
             <div className="hero-actions">
               <a className="primary-action" href="#projekte">Arbeit ansehen <span aria-hidden="true">↓</span></a>
+              <a className="text-action" href="/Leon_Westermeir_Lebenslauf.pdf" target="_blank" rel="noreferrer">Lebenslauf PDF ↓</a>
               <a className="text-action" href="https://github.com/leonwwest" target="_blank" rel="noreferrer">GitHub ↗</a>
             </div>
           </div>
@@ -182,7 +183,7 @@ export default function Home() {
           <div className="dispatch-card" aria-label="Aktueller Projektstatus">
             <div className="dispatch-head">
               <span>Engineering dispatch</span>
-              <span>15.08.2026 · DE</span>
+              <span>Release 2026.08 · DE</span>
             </div>
             <div className="dispatch-main">
               <p className="dispatch-label">Aktiver Prüfbereich</p>
@@ -317,7 +318,7 @@ export default function Home() {
           <h2 id="more-title">Außerdem gebaut</h2>
           <div className="more-list">
             <a href="https://github.com/leonwwest/operations-kpi-automation-demo" target="_blank" rel="noreferrer"><span>Operations Data Quality</span><small>Python · API · Power BI</small><b>↗</b></a>
-            <a href="https://github.com/leonwwest/ludo_club" target="_blank" rel="noreferrer"><span>Board Magic</span><small>Flutter · langlebige Produktentwicklung</small><b>↗</b></a>
+            <a href="https://github.com/leonwwest/ludo-club" target="_blank" rel="noreferrer"><span>Board Magic</span><small>Flutter · langlebige Produktentwicklung</small><b>↗</b></a>
             <a href="https://github.com/leonwwest/slow-ai-app-incident-lab" target="_blank" rel="noreferrer"><span>Incident Automation Lab</span><small>OpenTelemetry · erklärbare Triage</small><b>↗</b></a>
           </div>
         </section>
