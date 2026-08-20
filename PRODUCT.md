@@ -42,7 +42,7 @@ Leon does not present a list of tools as expertise. He shows small, reproducible
 ## Brand Commitments
 
 - Public name: Leon Westermeir.
-- Professional direction: Cloud & Automation Engineer.
+- Professional direction: DevOps & Cloud Platform Engineering.
 - Voice: direct, specific, technically credible and human; never inflated or generically AI-written.
 - The website should feel novel and deliberately designed, not like a generated portfolio template.
 - Finished visuals must use real project material, typography, layout and code-driven graphics rather than AI-generated decorative imagery.
@@ -50,8 +50,8 @@ Leon does not present a list of tools as expertise. He shows small, reproducible
 ## Evidence on Hand
 
 - Four core public repositories with README documentation, CI, tests, release tags and real execution evidence, plus the privately operated Leon Work OS.
-- Core systems: Azure & Microsoft 365 Tenant Guard, Azure Platform IaC, GitOps Platform Lab, Leon Work OS and CloudScrobble.
-- Additional public work includes Operations Data Quality, Board Magic and Incident Automation Lab.
+- Core systems: Azure Platform IaC, GitOps Platform Lab, Incident Automation Lab, Azure & Microsoft 365 Tenant Guard and Leon Work OS.
+- Additional public work includes Operations Data Quality, Private AI Platform and CloudScrobble.
 - Published test counts stay per project instead of being combined into a context-free vanity total.
 - No testimonials, customer logos or production-client claims are available and none may be invented.
 

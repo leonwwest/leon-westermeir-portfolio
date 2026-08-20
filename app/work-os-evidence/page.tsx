@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Leon Work OS — sanitisierte Betriebsnachweise",
+  title: "Leon Work OS - sanitisierte Betriebsnachweise",
   description: "Sanitisierte Architektur-, Backup- und Restore-Nachweise des privat betriebenen Leon Work OS.",
 };
 

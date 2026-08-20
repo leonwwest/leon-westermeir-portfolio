@@ -21,10 +21,12 @@ test("server-renders the portfolio and its evidence path", async () => {
   const html = await response.text();
   assert.match(html, /<html[^>]+lang="de"/i);
   assert.match(html, /Leon Westermeir/);
-  assert.match(html, /Ich baue Systeme/);
+  assert.match(html, /IaC\. GitOps\./);
+  assert.match(html, /DevOps \/ Platform Engineering/);
   assert.match(html, /Leon Work OS/);
   assert.match(html, /Azure Platform IaC/);
-  assert.match(html, /Fünf Kernsysteme/);
+  assert.match(html, /Incident Automation Lab/);
+  assert.match(html, /DevOps-Arbeit zum Prüfen/);
   assert.match(html, /CloudScrobble/);
   assert.match(html, /v1\.2\.0/);
   assert.match(html, /Entscheidung/);
@@ -33,8 +35,12 @@ test("server-renders the portfolio and its evidence path", async () => {
   assert.doesNotMatch(html, /57\+|Sechs Systeme|Keine erfundene/);
   assert.match(html, /leon\.westermeir@ibmw-engineering\.com/);
   assert.match(html, /href="\/Leon_Westermeir_Lebenslauf\.pdf"/);
-  assert.match(html, /github\.com\/leonwwest\/ludo-club/);
+  assert.match(html, /github\.com\/leonwwest\/private-ai-lab/);
+  assert.doesNotMatch(html, /github\.com\/leonwwest\/ludo-club/);
   assert.doesNotMatch(html, /github\.com\/leonwwest\/ludo_club/);
+  const projectHtml = html.slice(html.indexOf('id="projekte"'));
+  assert.ok(projectHtml.indexOf("Azure Platform IaC") < projectHtml.indexOf("GitOps Platform Lab"));
+  assert.ok(projectHtml.indexOf("GitOps Platform Lab") < projectHtml.indexOf("Incident Automation Lab"));
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton|codex-preview/i);
 });
 

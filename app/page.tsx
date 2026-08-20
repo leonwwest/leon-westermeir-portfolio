@@ -5,7 +5,6 @@ import Image from "next/image";
 
 type Project = {
   id: string;
-  number: string;
   title: string;
   role: string;
   purpose: string;
@@ -27,33 +26,13 @@ type Project = {
 
 const projects: Project[] = [
   {
-    id: "m365-automation",
-    number: "01",
-    title: "Azure & Microsoft 365 Tenant Guard",
-    role: "Safe operations",
-    purpose: "Bestände prüfen, Abweichungen erklären und Änderungen kontrolliert freigeben.",
-    result:
-      "Python und PowerShell erzeugen aus einem reproduzierbaren Inventar denselben Governance-Report. Remediation bleibt bis zur expliziten Freigabe im Dry Run.",
-    evidence: "11 Tests · 11 deterministische Findings · Release v1.2.0",
-    decision: "Inventar, Bewertung und Remediation sind getrennte Schritte.",
-    boundary: "Die öffentliche Demo nutzt synthetische Tenant-Daten und führt keine Änderungen aus.",
-    stack: ["PowerShell", "Python", "Microsoft Graph", "GitHub Actions"],
-    image: "/projects/m365-automation-demo.gif",
-    still: "/projects/m365-automation.png",
-    imageAlt: "Terminaldemo des Azure und Microsoft 365 Tenant Guard",
-    repo: "https://github.com/leonwwest/azure-m365-automation-lab",
-    status: "v1.2.0",
-    tests: "11 / 11",
-  },
-  {
     id: "azure-platform",
-    number: "02",
     title: "Azure Platform IaC",
-    role: "Cloud foundation",
-    purpose: "Eine prüfbare Azure-Basis ohne dauerhafte Zugangsdaten.",
+    role: "Infrastructure as Code",
+    purpose: "Eine sichere Azure-Plattform aus Code planen und kontrolliert ausliefern.",
     result:
       "Terraform provisioniert Container Apps, Key Vault, Monitoring und kostenbewusste Leitplanken. GitHub Actions authentifiziert sich per OIDC.",
-    evidence: "13 automatisierte Tests · AzureRM v5 Contract · Release v1.1.0",
+    evidence: "13 automatisierte Tests / AzureRM v5 Contract / Release v1.1.0",
     decision: "GitHub Actions authentifiziert sich kurzlebig per OIDC statt mit gespeicherten Cloud-Secrets.",
     boundary: "Das öffentliche Evidence-Paket belegt lokale Planung und Verträge, nicht dauerhaft betriebene Azure-Ressourcen.",
     stack: ["Terraform", "Azure", "OIDC", "GitHub Actions"],
@@ -66,13 +45,12 @@ const projects: Project[] = [
   },
   {
     id: "gitops-platform",
-    number: "03",
     title: "GitOps Platform Lab",
-    role: "Platform engineering",
+    role: "Kubernetes operations",
     purpose: "Clusterzustand aus Git reproduzierbar machen, messen und wiederherstellen.",
     result:
       "Argo CD und Kustomize halten den gewünschten Zustand synchron. Policies, SLOs und ein Burn-Rate-Recovery-Ablauf machen Drift sichtbar und behebbar.",
-    evidence: "18 Tests · drei Overlays · Release v1.2.0",
+    evidence: "18 Tests / drei Overlays / Release v1.2.0",
     decision: "Ein gemeinsamer Basiszustand wird durch kleine, prüfbare Umgebungs-Overlays erweitert.",
     boundary: "Das Lab läuft lokal und dokumentiert Betriebsmechanik; es ist kein fremdes Produktionscluster.",
     stack: ["Kubernetes", "Argo CD", "Kustomize", "Prometheus"],
@@ -84,14 +62,49 @@ const projects: Project[] = [
     tests: "18 / 18",
   },
   {
+    id: "incident-automation",
+    title: "Incident Automation Lab",
+    role: "Observability & SRE",
+    purpose: "Metriken, Logs und Traces in eine sichere Incident-Entscheidung überführen.",
+    result:
+      "Ein reproduzierbar langsamer FastAPI-Dienst liefert reale Telemetrie an Prometheus, Loki und Jaeger. Deterministische Triage priorisiert Hypothesen, führt aber keine Änderung selbst aus.",
+    evidence: "SEV2-Fixture / CI und Security Gates / Release v1.1.0",
+    decision: "Automatisierung sammelt und erklärt Belege; Restart, Scale, Rollback und Credential-Rotation bleiben freigabepflichtig.",
+    boundary: "Latenz, Fehler und Kosten entstehen in einer lokalen Simulation, nicht in einem Produktionsausfall.",
+    stack: ["OpenTelemetry", "Prometheus", "Grafana", "Loki"],
+    image: "/projects/incident-response-demo.gif",
+    still: "/projects/incident-response.png",
+    imageAlt: "Realer Lauf des Incident Automation Labs mit langsamer Anfrage und Dry-Run-Triage",
+    repo: "https://github.com/leonwwest/slow-ai-app-incident-lab",
+    status: "v1.1.0",
+    tests: "SEV2 DRY RUN",
+  },
+  {
+    id: "m365-automation",
+    title: "Azure & Microsoft 365 Tenant Guard",
+    role: "Governance automation",
+    purpose: "Bestände prüfen, Abweichungen erklären und Änderungen kontrolliert freigeben.",
+    result:
+      "Python und PowerShell erzeugen aus einem reproduzierbaren Inventar denselben Governance-Report. Remediation bleibt bis zur expliziten Freigabe im Dry Run.",
+    evidence: "11 Tests / 11 deterministische Findings / Release v1.2.0",
+    decision: "Inventar, Bewertung und Remediation sind getrennte Schritte.",
+    boundary: "Die öffentliche Demo nutzt synthetische Tenant-Daten und führt keine Änderungen aus.",
+    stack: ["PowerShell", "Python", "Microsoft Graph", "GitHub Actions"],
+    image: "/projects/m365-automation-demo.gif",
+    still: "/projects/m365-automation.png",
+    imageAlt: "Terminaldemo des Azure und Microsoft 365 Tenant Guard",
+    repo: "https://github.com/leonwwest/azure-m365-automation-lab",
+    status: "v1.2.0",
+    tests: "11 / 11",
+  },
+  {
     id: "leon-work-os",
-    number: "04",
     title: "Leon Work OS",
-    role: "Systems automation",
+    role: "Operations control plane",
     purpose: "Aufgaben, Freigaben und Wiederanlauf auf eigener Infrastruktur steuern.",
     result:
       "Task Registry, Mac-Worker und Hermes bilden einen privaten Control Plane. Guardrails, Checkpoints, verschlüsselte Backups und Restore-Drills halten die Automation nachvollziehbar.",
-    evidence: "20 SQLite-Datenbanken geprüft · 2.898 Archivobjekte · Restore-Validierung 5,96 s",
+    evidence: "20 SQLite-Datenbanken geprüft / 2.898 Archivobjekte / Restore-Validierung 5,96 s",
     decision: "Jede externe Wirkung braucht eine explizite Freigabe; read-only Prüfungen bleiben automatisierbar.",
     boundary: "Repository und Betriebsdaten bleiben privat; veröffentlicht werden nur sanitisierte Prüfwerte.",
     stack: ["Python", "SQLite", "macOS", "Linux", "systemd"],
@@ -103,46 +116,26 @@ const projects: Project[] = [
     status: "Betrieb",
     tests: "15.08.2026",
   },
-  {
-    id: "cloudscrobble",
-    number: "05",
-    title: "CloudScrobble",
-    role: "Product engineering",
-    purpose: "Musikwiedergabe zuverlässig erfassen, auch wenn Netz oder Zugangsdaten ausfallen.",
-    result:
-      "Die iOS-App puffert Scrobbles offline, schützt Tokens im Keychain und delegiert serverseitige Aufgaben an einen kleinen Go- und Worker-Stack.",
-    evidence: "90 Swift-Tests · fünf CI-Jobs · Release v0.1.0",
-    decision: "Eine lokale Queue entkoppelt die Wiedergabe vom Netzwerk und macht Wiederholungen kontrollierbar.",
-    boundary: "Der öffentliche Stand belegt Architektur und Build; eine Store-Veröffentlichung wird nicht behauptet.",
-    stack: ["Swift", "SwiftUI", "Go", "Cloudflare Workers"],
-    image: "/projects/cloudscrobble.png",
-    still: "/projects/cloudscrobble.png",
-    video: "/projects/cloudscrobble-demo.mp4",
-    imageAlt: "Echte iOS-Oberfläche von CloudScrobble im Demo-Modus",
-    repo: "https://github.com/leonwwest/cloudscrobble-ios",
-    status: "v0.1.0",
-    tests: "90 TESTS",
-  },
 ];
 
 const workflow = [
-  ["01", "Unklarheit eingrenzen", "Randbedingungen, Risiken und das kleinste überprüfbare Ziel festhalten."],
-  ["02", "System automatisieren", "Konfiguration in Code überführen und sichere Standardwerte setzen."],
-  ["03", "Verhalten beweisen", "Tests, Metriken und reproduzierbare Demos statt bloßer Behauptungen."],
-  ["04", "Betrieb übergeben", "Runbook, Fehlerbilder und Recovery so dokumentieren, dass andere weiterkommen."],
+  ["Unklarheit eingrenzen", "Randbedingungen, Risiken und das kleinste überprüfbare Ziel festhalten."],
+  ["System automatisieren", "Konfiguration in Code überführen und sichere Standardwerte setzen."],
+  ["Verhalten beweisen", "Tests, Metriken und reproduzierbare Demos statt bloßer Behauptungen."],
+  ["Betrieb übergeben", "Runbook, Fehlerbilder und Recovery so dokumentieren, dass andere weiterkommen."],
 ];
 
 const directionContract = `<!--
-THESIS: Ein technisches Portfolio als helles Inbetriebnahmeprotokoll – ruhig, präzise und überprüfbar.
+THESIS: Ein technisches Portfolio als helles Inbetriebnahmeprotokoll, ruhig, präzise und überprüfbar.
 OWN-WORLD: Systeme sind Aufträge; Projekte sind Prüflose; Tests, Status und Runbooks sind die sichtbaren Belege.
-STORY: Erst Position und Signal, dann fünf inspizierbare Systeme, anschließend Arbeitsweise, Grenzen und Kontakt.
-FIRST VIEWPORT: Name, klare Zielrolle, ein aktives Projektfenster und reale Prüfsummen ohne dekorative Hero-Illustration.
+STORY: Erst DevOps-Positionierung und realer GitOps-Lauf, dann fünf inspizierbare Systeme, Arbeitsweise, Grenzen und Kontakt.
+FIRST VIEWPORT: Klare Zielrolle, präzise Aussage und ein realer GitOps-Run-Capture.
 FORM: Scharfe Werkstattkanten, viel warme Arbeitsfläche, tiefes Graphit und Säuregrün ausschließlich als präzises Signal.
 -->`;
 
 function Wordmark() {
   return (
-    <a className="wordmark" href="#top" aria-label="Leon Westermeir – zum Seitenanfang">
+    <a className="wordmark" href="#top" aria-label="Leon Westermeir, zum Seitenanfang">
       <span className="wordmark-mark" aria-hidden="true">LW</span>
       <span>Leon Westermeir</span>
     </a>
@@ -170,52 +163,43 @@ export default function Home() {
       <main id="main">
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="eyebrow"><span className="signal-dot" /> Microsoft · Infrastruktur · Cloud · Automation</p>
-            <h1 id="hero-title">Ich baue Systeme,<br />die man prüfen kann.</h1>
+            <p className="eyebrow">DevOps / Platform Engineering</p>
+            <h1 id="hero-title">IaC. GitOps.<br />Sicher im Betrieb.</h1>
             <p className="hero-intro">
-              Ich bin Leon – ausgebildeter Fachinformatiker Systemintegration und B.Sc. International Information Systems. Ich arbeite mit Microsoft 365, Entra ID, Windows-Infrastruktur, Netzwerk und Security und automatisiere wiederkehrende Abläufe mit PowerShell und Python.
+              Ich automatisiere Azure- und Kubernetes-Plattformen mit IaC, CI/CD, Observability und dokumentiertem Recovery.
             </p>
             <div className="hero-actions">
-              <a className="primary-action" href="#projekte">Arbeit ansehen <span aria-hidden="true">↓</span></a>
-              <a className="text-action" href="/Leon_Westermeir_Lebenslauf.pdf" target="_blank" rel="noreferrer">Lebenslauf PDF ↓</a>
-              <a className="text-action" href="https://github.com/leonwwest" target="_blank" rel="noreferrer">GitHub ↗</a>
+              <a className="primary-action" href="#projekte">DevOps-Projekte</a>
+              <a className="text-action" href="/Leon_Westermeir_Lebenslauf.pdf" target="_blank" rel="noreferrer">Lebenslauf</a>
+              <a className="text-action" href="https://github.com/leonwwest" target="_blank" rel="noreferrer">GitHub</a>
             </div>
           </div>
 
-          <div className="dispatch-card" aria-label="Aktueller Projektstatus">
-            <div className="dispatch-head">
-              <span>Engineering dispatch</span>
-              <span>Release 2026.08 · DE</span>
+          <figure className="hero-evidence">
+            <div className="hero-evidence-frame">
+              <Image className="motion-demo" src="/projects/gitops-platform-demo.gif" alt="Realer Verifikationslauf des GitOps Platform Labs" width={1280} height={720} unoptimized priority />
+              <Image className="still-demo" src="/projects/gitops-platform.png" alt="Verifikationslauf des GitOps Platform Labs" width={1280} height={640} priority />
             </div>
-            <div className="dispatch-main">
-              <p className="dispatch-label">Aktiver Prüfbereich</p>
-              <p className="dispatch-value">Microsoft systems<br />&amp; safe automation</p>
-              <dl className="dispatch-metrics">
-                <div><dt>Kernsysteme</dt><dd>05</dd></div>
-                <div><dt>Releases</dt><dd>04</dd></div>
-                <div><dt>Status</dt><dd className="status-pass">AKTIV</dd></div>
-              </dl>
-            </div>
-            <div className="dispatch-foot">
-              <span>Belege: Code · Tests · Runbooks</span>
-              <span aria-hidden="true">LW—05</span>
-            </div>
-          </div>
+            <figcaption>
+              <strong>GitOps Platform Lab</strong>
+              <span>Argo CD: Synced / Healthy</span>
+              <span>Drift: 2 → 1 Replica</span>
+            </figcaption>
+          </figure>
         </section>
 
         <section className="experience-strip" aria-label="Qualifikation und technische Praxis">
-          <div><span>Ausbildung</span><strong>Fachinformatiker Systemintegration</strong></div>
-          <div><span>Studium</span><strong>B.Sc. International Information Systems</strong></div>
-          <div><span>Praxis</span><strong>M365 · Entra · Windows · Netzwerk/Security</strong></div>
-          <div><span>Automation</span><strong>PowerShell · Python</strong></div>
+          <div><span>Zielrolle</span><strong>DevOps / Platform Engineering</strong></div>
+          <div><span>Cloud</span><strong>Azure / Terraform / OIDC</strong></div>
+          <div><span>Platform</span><strong>Kubernetes / Argo CD / Kustomize</strong></div>
+          <div><span>Operations</span><strong>Prometheus / OpenTelemetry / Runbooks</strong></div>
         </section>
 
         <section className="project-section" id="projekte" aria-labelledby="projects-title">
           <div className="section-heading">
-            <p className="section-index">01 / Ausgewählte Systeme</p>
             <div>
-              <h2 id="projects-title">Fünf Kernsysteme.<br />Entscheidung und Beleg.</h2>
-              <p>Jedes Projekt zeigt Problem, technische Entscheidung, überprüfbaren Nachweis und eine klare Grenze. Öffentliche Systeme führen direkt zum Code.</p>
+              <h2 id="projects-title">DevOps-Arbeit zum Prüfen.</h2>
+              <p>Infrastruktur, Delivery, Observability und Recovery führen direkt zu Code, CI und Runbooks.</p>
             </div>
           </div>
 
@@ -231,12 +215,11 @@ export default function Home() {
                     onClick={() => setActiveId(project.id)}
                     aria-pressed={selected}
                   >
-                    <span className="project-number">{project.number}</span>
                     <span className="project-row-copy">
                       <strong>{project.title}</strong>
                       <small>{project.purpose}</small>
                     </span>
-                    <span className="row-status"><span className="signal-dot" /> {project.status}</span>
+                    <span className="row-status">{project.status}</span>
                     <span className="row-arrow" aria-hidden="true">{selected ? "→" : "↗"}</span>
                   </button>
                 );
@@ -245,7 +228,7 @@ export default function Home() {
 
             <article className="inspection" aria-live="polite" aria-atomic="true">
               <div className="inspection-head">
-                <span>LOT {active.number} · {active.role}</span>
+                <span>{active.role}</span>
                 <span>TEST {active.tests}</span>
               </div>
               <div className="demo-frame">
@@ -294,16 +277,14 @@ export default function Home() {
 
         <section className="workflow-section" id="arbeitsweise" aria-labelledby="workflow-title">
           <div className="section-heading section-heading-light">
-            <p className="section-index">02 / Arbeitsweise</p>
             <div>
               <h2 id="workflow-title">Schnell lernen.<br />Sauber belegen.</h2>
               <p>Produktiver Betrieb verlangt mehr als eine gute Demo. Darum baue ich von Anfang an auf Nachvollziehbarkeit und sichere Übergaben.</p>
             </div>
           </div>
           <ol className="workflow-list">
-            {workflow.map(([number, title, copy]) => (
-              <li key={number}>
-                <span>{number}</span>
+            {workflow.map(([title, copy]) => (
+              <li key={title}>
                 <h3>{title}</h3>
                 <p>{copy}</p>
               </li>
@@ -313,7 +294,6 @@ export default function Home() {
 
         <section className="proof-section" aria-labelledby="proof-title">
           <div className="section-heading">
-            <p className="section-index">03 / Einordnung</p>
             <div>
               <h2 id="proof-title">Was die Nachweise<br />wirklich abdecken.</h2>
             </div>
@@ -324,26 +304,25 @@ export default function Home() {
             </div>
             <dl className="proof-facts">
               <div><dt>Heute</dt><dd>System Engineering, Support &amp; Automation</dd></div>
-              <div><dt>Nächster Schritt</dt><dd>Microsoft-, Infrastruktur- oder Cloud-Rolle</dd></div>
-              <div><dt>Arbeitsort</dt><dd>Raum Augsburg / München · Remote</dd></div>
-              <div><dt>Sprachen</dt><dd>Deutsch · Englisch</dd></div>
+              <div><dt>Zielrolle</dt><dd>DevOps / Cloud Platform Engineering</dd></div>
+              <div><dt>Arbeitsort</dt><dd>Raum Augsburg / München, remote in Deutschland</dd></div>
+              <div><dt>Sprachen</dt><dd>Deutsch und Englisch</dd></div>
             </dl>
           </div>
         </section>
 
         <section className="more-section" aria-labelledby="more-title">
-          <p className="section-index">04 / Weitere Arbeit</p>
           <h2 id="more-title">Außerdem gebaut</h2>
           <div className="more-list">
-            <a href="https://github.com/leonwwest/operations-kpi-automation-demo" target="_blank" rel="noreferrer"><span>Operations Data Quality</span><small>Python · API · Power BI</small><b>↗</b></a>
-            <a href="https://github.com/leonwwest/ludo-club" target="_blank" rel="noreferrer"><span>Board Magic</span><small>Flutter · langlebige Produktentwicklung</small><b>↗</b></a>
-            <a href="https://github.com/leonwwest/slow-ai-app-incident-lab" target="_blank" rel="noreferrer"><span>Incident Automation Lab</span><small>OpenTelemetry · erklärbare Triage</small><b>↗</b></a>
+            <a href="https://github.com/leonwwest/operations-kpi-automation-demo" target="_blank" rel="noreferrer"><span>Operations Data Quality</span><small>Python / API / Power BI</small><b>↗</b></a>
+            <a href="https://github.com/leonwwest/private-ai-lab" target="_blank" rel="noreferrer"><span>Private AI Platform</span><small>Docker / k3d / Observability</small><b>↗</b></a>
+            <a href="https://github.com/leonwwest/cloudscrobble-ios" target="_blank" rel="noreferrer"><span>CloudScrobble</span><small>Swift / Go / Cloudflare Workers</small><b>↗</b></a>
           </div>
         </section>
 
         <section className="contact-section" id="kontakt" aria-labelledby="contact-title">
-          <p className="eyebrow"><span className="signal-dot" /> Offen für den nächsten Einsatz</p>
-          <h2 id="contact-title">Lassen Sie uns über<br />das System sprechen.</h2>
+          <p className="contact-kicker">Offen für DevOps, Cloud Platform und Infrastructure Automation.</p>
+          <h2 id="contact-title">Lassen Sie uns über<br />Ihre DevOps-Rolle sprechen.</h2>
           <a className="contact-mail" href="mailto:leon.westermeir@ibmw-engineering.com">leon.westermeir@<wbr />ibmw-engineering.com <span aria-hidden="true">↗</span></a>
         </section>
       </main>

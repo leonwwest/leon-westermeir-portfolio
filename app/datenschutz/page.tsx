@@ -7,7 +7,7 @@ export default function Datenschutz() {
   return (
     <main className="legal-page">
       <Link className="legal-back" href="/">← Portfolio</Link>
-      <p className="section-index">Rechtliches / 02</p>
+      <p className="section-index">Rechtliches</p>
       <h1>Datenschutz</h1>
       <div className="legal-copy">
         <section><h2>1. Verantwortlicher</h2><p>Leon Westermeir, Am Unteranger 3, 86672 Thierhaupten<br /><a href="mailto:leon.westermeir@ibmw-engineering.com">leon.westermeir@ibmw-engineering.com</a></p></section>

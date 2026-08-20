@@ -123,7 +123,7 @@ def project_entry(c: canvas.Canvas, y: float, title: str, proof: str, body: str,
     c.setFillColor(INK)
     c.setFont("Helvetica-Bold", 7.1)
     c.drawString(LEFT, y - 3.7 * mm, stack.upper())
-    next_y = y - 8 * mm
+    next_y = y - 10.5 * mm
     c.setStrokeColor(LINE)
     c.setLineWidth(0.4)
     c.line(LEFT, next_y + 1.7 * mm, RIGHT, next_y + 1.7 * mm)
@@ -138,7 +138,7 @@ def draw_page_one(c: canvas.Canvas):
     c.drawString(LEFT, y, "Leon Westermeir")
     y -= 10.5 * mm
     c.setFont("Helvetica-Bold", 13)
-    c.drawString(LEFT, y, "Microsoft 365 & Infrastructure Automation")
+    c.drawString(LEFT, y, "DevOps & Cloud Platform Engineering")
 
     y -= 9.5 * mm
     contact = [
@@ -161,10 +161,10 @@ def draw_page_one(c: canvas.Canvas):
     y -= 10 * mm
     y = section_heading(c, "Profil", y, "01")
     profile = (
-        "Ausgebildeter <b>Fachinformatiker für Systemintegration</b> mit B.Sc. International Information "
-        "Systems. Praxis in Microsoft 365, Entra ID, Windows-Infrastruktur, Netzwerk und Security sowie "
-        "in der Automatisierung wiederkehrender Betriebsabläufe mit PowerShell und Python. Ich suche eine "
-        "Vollzeitrolle, in der sichere Administration, nachvollziehbare Automation und saubere Übergaben zusammengehören."
+        "System Engineer und ausgebildeter <b>Fachinformatiker für Systemintegration</b> mit B.Sc. "
+        "International Information Systems. Ich verbinde Microsoft-, Windows- und Netzwerkpraxis mit "
+        "Azure, Terraform, Kubernetes, GitOps und Observability. Gesucht ist eine Vollzeitrolle in DevOps, "
+        "Cloud Platform oder Infrastructure Automation mit prüfbaren Änderungen und sauberem Betrieb."
     )
     y = draw_text(c, profile, paragraph_style("profile", 9.8, 14.0), LEFT, y, CONTENT_W)
 
@@ -222,15 +222,6 @@ def draw_page_two(c: canvas.Canvas):
     y = project_entry(
         c,
         y,
-        "Azure & Microsoft 365 Tenant Guard",
-        "Release v1.2.0 · 11 Tests · 11 deterministische Findings",
-        "Python und PowerShell bewerten ein reproduzierbares Inventar. Remediation bleibt bis zur expliziten "
-        "Freigabe im Dry Run; die öffentliche Demo nutzt synthetische Tenant-Daten.",
-        "PowerShell · Python · Microsoft Graph · GitHub Actions",
-    )
-    y = project_entry(
-        c,
-        y,
         "Azure Platform IaC",
         "Release v1.1.0 · 13 Tests · AzureRM v5 Contract",
         "Terraform modelliert Container Apps, Key Vault und Monitoring. GitHub Actions nutzt kurzlebige OIDC-" 
@@ -249,11 +240,20 @@ def draw_page_two(c: canvas.Canvas):
     y = project_entry(
         c,
         y,
-        "Leon Work OS",
-        "Privater Eigenbetrieb · 20 SQLite-Datenbanken geprüft · 2.898 Archivobjekte",
-        "Task Registry, Mac-Worker und Hermes bilden einen privaten Control Plane. Guardrails, Checkpoints, "
-        "verschlüsselte Backups und Restore-Drills halten Automation nachvollziehbar; veröffentlicht sind nur sanitisierte Prüfwerte.",
-        "Python · SQLite · macOS · Linux · systemd",
+        "Incident Automation Lab",
+        "Release v1.1.0 · SEV2-Fixture · Triage im Dry Run",
+        "Prometheus, Loki und OpenTelemetry liefern reale Lab-Telemetrie für eine deterministische Incident-Triage. "
+        "Restart, Scale, Rollback und Credential-Rotation bleiben explizit freigabepflichtig.",
+        "OpenTelemetry · Prometheus · Grafana · Loki",
+    )
+    y = project_entry(
+        c,
+        y,
+        "Azure & Microsoft 365 Tenant Guard",
+        "Release v1.2.0 · 11 Tests · 11 deterministische Findings",
+        "Python und PowerShell bewerten ein reproduzierbares Inventar. Remediation bleibt bis zur expliziten "
+        "Freigabe im Dry Run; die öffentliche Demo nutzt synthetische Tenant-Daten.",
+        "PowerShell · Python · Microsoft Graph · GitHub Actions",
     )
 
     y -= 3 * mm
@@ -282,9 +282,9 @@ def draw_page_two(c: canvas.Canvas):
     y -= 9 * mm
     y = section_heading(c, "Kompetenzen", y, "05")
     cols = [
-        ("SYSTEME", "Microsoft 365 · Entra ID · Windows · Active Directory · Netzwerk · Fortinet · Veeam"),
-        ("AUTOMATION", "PowerShell · Python · REST APIs · SQL · GitHub Actions · CI/CD"),
-        ("CLOUD & PLATFORM", "Azure · Terraform · Docker · Kubernetes · Argo CD · Monitoring"),
+        ("PLATFORM & DELIVERY", "Azure · Terraform · Docker · Kubernetes · Argo CD · GitHub Actions · CI/CD"),
+        ("OBSERVABILITY & RELIABILITY", "Prometheus · Grafana · Loki · OpenTelemetry · SLOs · Runbooks"),
+        ("SYSTEME & AUTOMATION", "Microsoft 365 · Entra ID · Windows · Netzwerk · PowerShell · Python"),
         ("SPRACHEN", "Deutsch: Muttersprache · Englisch: sehr gut"),
     ]
     col_gap = 7 * mm
@@ -312,7 +312,7 @@ def build():
     c = canvas.Canvas(str(OUTPUT), pagesize=A4, pageCompression=1)
     c.setTitle("Leon Westermeir - Öffentlicher Lebenslauf")
     c.setAuthor("Leon Westermeir")
-    c.setSubject("Microsoft 365 & Infrastructure Automation")
+    c.setSubject("DevOps & Cloud Platform Engineering")
     draw_page_one(c)
     c.showPage()
     draw_page_two(c)

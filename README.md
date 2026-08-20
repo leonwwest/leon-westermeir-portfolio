@@ -1,12 +1,12 @@
-# Leon Westermeir — Engineering Portfolio
+# Leon Westermeir - DevOps & Cloud Platform Portfolio
 
 [![CI](https://github.com/leonwwest/leon-westermeir-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/leonwwest/leon-westermeir-portfolio/actions/workflows/ci.yml)
 
-Personal portfolio for Microsoft, Infrastructure, Cloud and Automation roles. The site presents a privately operated Work OS and five reproducible engineering labs as inspectable systems: real captures, test counts, technical decisions, public repositories and explicit production boundaries.
+Personal portfolio for DevOps, Cloud Platform and Infrastructure Automation roles. The fastest review path leads through Azure Infrastructure as Code, Kubernetes GitOps and Incident Automation before showing Microsoft governance automation and a privately operated Work OS.
 
 ## Design direction
 
-The interface is a **Systems Dispatch Board** rather than a conventional portfolio card grid. Warm paper surfaces, graphite structures and a single signal green create the visual language of a commissioning report. All project visuals are real captures from the linked repositories; no generated decorative imagery is used.
+The interface is a **Systems Evidence Board** rather than a conventional portfolio card grid. Warm paper surfaces, graphite structures and a single signal green create the visual language of a commissioning report. The hero and project console use real execution captures from the linked repositories; no generated decorative imagery is used.
 
 The product brief is in [`PRODUCT.md`](./PRODUCT.md). Research artifacts and the persisted design system are kept alongside the code for traceability.
 
@@ -41,4 +41,4 @@ Every push to `main` and every pull request runs a clean install, lint, the Next
 
 ## Accuracy
 
-The five public systems are reproducible labs. Leon Work OS is privately operated on personal infrastructure. Both show an engineering approach to architecture, automation, tests and operational handover; neither is presented as a deployment in a third-party production environment.
+The four public core systems are reproducible labs. Leon Work OS is privately operated on personal infrastructure. Both show an engineering approach to architecture, delivery, observability, automation and recovery; neither is presented as a deployment in a third-party production environment.
