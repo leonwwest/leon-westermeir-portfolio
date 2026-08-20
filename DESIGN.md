@@ -1,6 +1,6 @@
 ---
 name: Leon Westermeir Portfolio
-description: Ein helles technisches Inbetriebnahmeprotokoll für prüfbare Cloud- und Automationsarbeit.
+description: Ein helles technisches Inbetriebnahmeprotokoll für prüfbare DevOps- und Cloud-Platform-Arbeit.
 colors:
   signal: "#c8ff3d"
   signal-deep: "#526d00"
@@ -97,9 +97,9 @@ components:
 
 ## Overview
 
-**Creative North Star: "Systems Dispatch Board"**
+**Creative North Star: "Systems Evidence Board"**
 
-Das Portfolio wirkt wie ein helles Inbetriebnahmeprotokoll: ruhig, präzise, werkstattartig und für Recruiter sofort lesbar. Viel warme Arbeitsfläche und ein strenges Linienraster geben realen Projektdemos, Tests und Runbooks den Charakter sichtbarer Prüfbelege. Es ist kein simuliertes Terminal und keine technische Kulisse; die Oberfläche ordnet vorhandene Arbeit wie ein Dispatch Board.
+Das Portfolio wirkt wie ein helles Inbetriebnahmeprotokoll: ruhig, präzise, werkstattartig und für Recruiter sofort lesbar. Viel warme Arbeitsfläche und ein strenges Linienraster geben realen Projektdemos, Tests und Runbooks den Charakter sichtbarer Prüfbelege. Es ist kein simuliertes Terminal und keine technische Kulisse; die Oberfläche ordnet vorhandene Arbeit wie ein Evidence Board.
 
 Die Sprache bleibt menschlich und direkt. Scharfe Kanten, große Satzflächen und wenige bewusst gesetzte Statussignale ersetzen dekorative Karten, Verläufe und Effekte. Die alte Navy-Orange-Agenturwelt sowie generische KI- oder SaaS-Portfolios sind bestätigte Anti-Referenzen.
 
@@ -164,7 +164,7 @@ Die Palette übersetzt Papier, Druckfarbe und Prüfsignal in eine helle, technis
 
 Die Seite folgt einer langen, kapitelartigen Arbeitsfläche. Hauptabschnitte erhalten einen großen fluiden Vertikalabstand; der horizontale Seitenrand wächst zwischen kleinen und großen Viewports mit. Abschnittsüberschriften teilen sich auf Desktop in schmalen Index und breite Aussage. Projektkonsole, Prozessschritte und Nachweisbereiche nutzen sichtbare Linien statt umschlossener Karten.
 
-Oberhalb von 1040px stehen Hero, Projektindex und aktiver Prüfbereich in asymmetrischen Spalten. Unterhalb davon werden Hero und Projektkonsole linear, während der Prozess auf zwei Spalten reduziert wird. Unter 700px bleibt nur eine Spalte: Nebenbeschreibungen im Projektindex entfallen, Navigationspunkte werden auf die Kontaktaktion verdichtet und alle Hauptaktionen behalten mindestens 44px Höhe.
+Oberhalb von 1040px stehen Hero-Aussage und realer GitOps-Run-Capture in asymmetrischen Spalten. Projektindex und aktiver Prüfbereich folgen als zweite technische Oberfläche. Unterhalb davon werden Hero und Projektkonsole linear, während der Prozess auf zwei Spalten reduziert wird. Unter 700px bleibt nur eine Spalte: Nebenbeschreibungen im Projektindex entfallen, Navigationspunkte werden auf die Kontaktaktion verdichtet und alle Hauptaktionen behalten mindestens 44px Höhe.
 
 **The Chapter Distance Rule.** Große Abstände trennen eigenständige Argumente; feine Linien trennen Einträge innerhalb eines Arguments.
 
@@ -219,9 +219,9 @@ Die Navigation ist eine einzelne horizontale Zeile mit klarer Wortmarke, zwei Te
 
 Die Signaturkomponente verbindet fünf semantische Projektzeilen mit einem aktiven Prüfbereich. Der aktive Auftrag invertiert auf Graphit, während die rechte Inspektionsleiste Säuregrün trägt. Die eigentliche Projektgrafik ist immer ein realer Run-Capture; darunter folgen Problem, Ergebnis, Prüfnachweis, Technologien und Repository-Link in dieser Reihenfolge.
 
-### Dispatch Card
+### Hero Evidence Frame
 
-Das Hero-Blatt bündelt Rolle, Datum, Schwerpunkt und Prüfsummen wie einen Inbetriebnahmeauftrag. Graphitkopf, helles Prüfblatt, säuregrüner Fuß und harter Offset machen es zum einzigen bewusst aufliegenden Werkstück der ersten Ansicht.
+Der Hero zeigt einen realen GitOps-Verifikationslauf mit einer knappen, faktischen Bildunterschrift. Die harte Einfassung und der mechanische Offset machen den Run-Capture zum einzigen bewusst aufliegenden Werkstück der ersten Ansicht.
 
 ## Do's and Don'ts
 

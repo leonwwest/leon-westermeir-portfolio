@@ -7,7 +7,7 @@ export default function Impressum() {
   return (
     <main className="legal-page">
       <Link className="legal-back" href="/">← Portfolio</Link>
-      <p className="section-index">Rechtliches / 01</p>
+      <p className="section-index">Rechtliches</p>
       <h1>Impressum</h1>
       <div className="legal-copy">
         <section><h2>Angaben gemäß § 5 DDG</h2><p>ibmw automations<br />Einzelunternehmen<br />Vertreten durch Leon Westermeir</p><p>Am Unteranger 3<br />86672 Thierhaupten<br />Deutschland</p></section>
