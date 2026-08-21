@@ -24,7 +24,7 @@ if __name__ == "__main__":
     contact = (
         "Augsburg / München&nbsp;&nbsp;|&nbsp;&nbsp;"
         '<link href="mailto:leon.westermeir@ibmw-engineering.com">leon.westermeir@ibmw-engineering.com</link><br/>'
-        '<link href="https://ibmw-automations.de">ibmw-automations.de</link>&nbsp;&nbsp;|&nbsp;&nbsp;'
+        '<link href="https://ibmw-automations.de/#project=azure-platform">ibmw-automations.de</link>&nbsp;&nbsp;|&nbsp;&nbsp;'
         '<link href="https://github.com/leonwwest">github.com/leonwwest</link>'
     )
     print(
