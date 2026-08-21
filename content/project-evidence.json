@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-08-21",
+  "projects": {
+    "azure-platform": {
+      "title": "Azure Platform IaC",
+      "repository": "https://github.com/leonwwest/azure-platform-iac-lab",
+      "verifiedRef": "fed45ee",
+      "ciRun": "https://github.com/leonwwest/azure-platform-iac-lab/actions/runs/32418522104",
+      "release": "v1.1.0",
+      "testSuites": {
+        "Terraform Policy": 5,
+        "Python Contracts": 8
+      },
+      "testTotal": 13,
+      "highlights": [
+        "13/13 Tests",
+        "5 Policy-Guardrails",
+        "OIDC ohne Client Secret"
+      ],
+      "boundary": "Statische, subscription-freie Evidence; kein dauerhaft betriebener Azure-Stack."
+    },
+    "gitops-platform": {
+      "title": "GitOps Platform Lab",
+      "repository": "https://github.com/leonwwest/gitops-platform-lab",
+      "verifiedRef": "eaf8a14",
+      "ciRun": "https://github.com/leonwwest/gitops-platform-lab/actions/runs/32416858306",
+      "release": "v1.3.0",
+      "testSuites": {
+        "API": 7,
+        "Manifests": 8,
+        "Operational Contracts": 6,
+        "SLO/Burn Rate": 3
+      },
+      "testTotal": 24,
+      "highlights": [
+        "24/24 Tests",
+        "3 gerenderte Overlays",
+        "Drift 2 → 1 · Synced / Healthy"
+      ],
+      "boundary": "Lokal reproduzierbares Lab; Drift und Status stammen aus einem dokumentierten Demo-Lauf, nicht aus einem produktiven Cluster."
+    },
+    "incident-automation": {
+      "title": "Incident Automation Lab",
+      "repository": "https://github.com/leonwwest/slow-ai-app-incident-lab",
+      "verifiedRef": "50f1a8d",
+      "ciRun": "https://github.com/leonwwest/slow-ai-app-incident-lab/actions/runs/32418765939",
+      "release": "v1.1.0",
+      "testSuites": {
+        "Pytest": 4,
+        "CI Endpoint Checks": 5
+      },
+      "testTotal": 9,
+      "highlights": [
+        "4 Tests + 5 Endpoint-Checks",
+        "SEV2 · hohe Konfidenz",
+        "0 automatische Änderungen"
+      ],
+      "boundary": "Reale Lab-Telemetrie mit simulierten Fehlerbildern; Restart, Scale, Rollback und Rotation bleiben freigabepflichtig."
+    },
+    "m365-automation": {
+      "title": "Azure & Microsoft 365 Tenant Guard",
+      "repository": "https://github.com/leonwwest/azure-m365-automation-lab",
+      "verifiedRef": "e7f0b28",
+      "ciRun": "https://github.com/leonwwest/azure-m365-automation-lab/actions/runs/32418197030",
+      "release": "v1.2.0",
+      "testSuites": {
+        "Python": 9,
+        "Pester": 2
+      },
+      "testTotal": 11,
+      "highlights": [
+        "11/11 Tests",
+        "11 reproduzierbare Findings",
+        "Dry Run bis zur Freigabe"
+      ],
+      "boundary": "Synthetische Tenant-Daten; alle 11 Remediation-Aktionen bleiben freigabepflichtig."
+    },
+    "data-quality": {
+      "title": "Operations Data Quality",
+      "repository": "https://github.com/leonwwest/operations-kpi-automation-demo",
+      "verifiedRef": "54716b6",
+      "ciRun": "https://github.com/leonwwest/operations-kpi-automation-demo/actions/runs/31848484058",
+      "release": "v1.1.0",
+      "testSuites": {
+        "Pytest": 27
+      },
+      "testTotal": 27,
+      "highlights": [
+        "27/27 Tests",
+        "6 Quality Checks",
+        "Gate 100/100 · 52 Zeilen"
+      ],
+      "boundary": "Synthetische Daten und ein reproduzierbarer Demo-Lauf; keine produktive ERP-Verbindung."
+    }
+  }
+}
