@@ -19,6 +19,7 @@ const server = spawn("npm", ["run", "start"], {
   cwd: new URL("..", import.meta.url),
   env: { ...process.env },
   stdio: ["ignore", "pipe", "pipe"],
+  detached: process.platform !== "win32",
 });
 
 let serverOutput = "";
@@ -34,7 +35,36 @@ try {
     });
   }
 } finally {
-  server.kill("SIGTERM");
+  await stopServer();
+}
+
+async function stopServer() {
+  if (server.exitCode !== null) return;
+
+  let resolveExit;
+  const exited = new Promise((resolve) => { resolveExit = resolve; });
+  server.once("exit", resolveExit);
+
+  try {
+    if (process.platform === "win32") server.kill("SIGTERM");
+    else process.kill(-server.pid, "SIGTERM");
+  } catch {
+    server.kill("SIGTERM");
+  }
+
+  const stoppedGracefully = await Promise.race([
+    exited.then(() => true),
+    new Promise((resolve) => setTimeout(() => resolve(false), 5_000)),
+  ]);
+  if (stoppedGracefully || server.exitCode !== null) return;
+
+  try {
+    if (process.platform === "win32") server.kill("SIGKILL");
+    else process.kill(-server.pid, "SIGKILL");
+  } catch {
+    server.kill("SIGKILL");
+  }
+  await exited;
 }
 
 async function runAxe(executablePath) {
