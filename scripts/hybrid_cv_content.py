@@ -1,5 +1,12 @@
 """Sanitized single source of truth for the public and application CV exports."""
 
+import json
+from pathlib import Path
+
+
+EVIDENCE_PATH = Path(__file__).resolve().parents[1] / "content" / "project-evidence.json"
+EVIDENCE = json.loads(EVIDENCE_PATH.read_text(encoding="utf-8"))["projects"]
+
 HEADLINE = "DevOps & Cloud Platform Engineering"
 
 PROFILE = (
@@ -99,7 +106,7 @@ PROJECTS = [
     {
         "title": "Azure Platform IaC Lab",
         "url": "https://github.com/leonwwest/azure-platform-iac-lab",
-        "proof": "Release v1.1.0 · 13 Tests · AzureRM-v5-Contract",
+        "proof": f"Release {EVIDENCE['azure-platform']['release']} · {EVIDENCE['azure-platform']['testTotal']} Tests · AzureRM-v5-Contract",
         "text": (
             "Terraform modelliert Azure Container Apps, Managed Identity, einen privaten Key-Vault-Endpunkt, "
             "RBAC, Monitoring und Kostenleitplanken. GitHub Actions nutzt OIDC statt gespeicherter Cloud-Secrets; "
@@ -110,7 +117,7 @@ PROJECTS = [
     {
         "title": "GitOps Platform Lab",
         "url": "https://github.com/leonwwest/gitops-platform-lab",
-        "proof": "Release v1.2.0 · 18 Tests · drei Kustomize-Overlays",
+        "proof": f"Release {EVIDENCE['gitops-platform']['release']} · {EVIDENCE['gitops-platform']['testTotal']} Tests · drei Kustomize-Overlays",
         "text": (
             "Ein Non-Root-FastAPI-Service wird über Git Desired State, Kustomize und Argo CD reconciliert. "
             "Prometheus, Grafana, Loki und OpenTelemetry belegen SLOs, Drift Self-Healing, Failure Exercise "

@@ -31,13 +31,19 @@ Leon does not present a list of tools as expertise. He shows small, reproducible
 ## Capabilities and Constraints
 
 - Present five distinct core systems plus selected additional work.
+- Offer three fast role-based entry paths without weakening the Cloud/Platform primary positioning.
+- Keep the homepage focused on role selection, project proof and contact; move operating method and evidence boundaries to a dedicated route.
+- Give Data and Business Applications visitors a dedicated, internally shareable Data Quality proof page.
 - Link every technical claim to a public repository or a real captured run where possible.
+- Keep project release and verification facts in one checked-in evidence source shared by the website and public CV.
 - Include an immediate email contact path and GitHub profile path.
 - Offer a concise public CV without private address or phone details.
 - Explain that portfolio labs are reproducible demonstrations, not claims of operating real customer tenants or production clusters.
 - Do not fabricate customers, testimonials, production usage, employer endorsements or deployment scale.
 - No LinkedIn account is available or required.
 - The site must be responsive, keyboard-accessible and respect reduced-motion preferences.
+- Evidence media autoplays silently while visible, pauses offscreen, respects reduced-motion preferences, remains user-controlled and exposes an original-size path.
+- Accessibility and performance regressions are blocked by Axe and Lighthouse gates in CI.
 
 ## Brand Commitments
 

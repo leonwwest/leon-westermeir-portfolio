@@ -2,7 +2,9 @@
 version: 1
 slug: "app-page-tsx"
 primary_target: "app/page.tsx"
-related_targets: []
+related_targets:
+  - "app/globals.css"
+  - "content/project-evidence.json"
 ---
 
 ## Scope and mode
@@ -15,19 +17,19 @@ Recruiters, hiring managers and engineering leads should identify Leon's Cloud/P
 
 ## Proof and constraints
 
-Lead with five real public engineering labs, real terminal captures, test counts, repository links, architecture decisions and explicit production boundaries. No client claims, testimonials, stock imagery, LinkedIn or AI-generated decorative images.
+Lead with five real public engineering labs, real terminal captures, test counts, repository links, architecture decisions and explicit production boundaries. Keep the homepage concise; route operating-method depth and Data Quality proof to dedicated pages. No client claims, testimonials, stock imagery, LinkedIn or AI-generated decorative images.
 
 ## Chosen direction
 
-Systems Dispatch Board: a bright industrial commissioning desk translated to the web. A fixed evidence rail and ruled status rows turn each project into an inspectable system rather than a promotional card. Cobalt owns the structural fields, safety orange marks active proof, and paper-white working surfaces keep dense details readable.
+Systems Evidence Board: a bright industrial commissioning desk translated to the web. Warm paper owns the working surface, graphite defines the structural fields, and acid signal green marks only active proof and primary action. A fixed evidence rail and ruled status rows turn each project into an inspectable system rather than a promotional card.
 
 ## Memorable moment
 
-The first viewport behaves like a live commissioning receipt: Leon's role, availability and five system routes share one aligned board, while a real terminal capture sits in the active inspection bay. Selecting a route reconfigures the evidence bay without turning the page into a dashboard.
+The first viewport behaves like a commissioning receipt: Leon's role and a recruiter-readable Azure result share one aligned board, while a real silently looping terminal capture runs in the active inspection bay. Three role routes then take visitors directly to the evidence most relevant to their hiring question.
 
 ## Interaction and adaptation
 
-One project switcher uses semantic buttons and an aria-live detail region. Desktop keeps a two-column dispatch board; mobile becomes a vertical runbook with the next project visible below the current one. Motion is limited to a single controlled reveal and fast state transitions, with a reduced-motion fallback.
+One project switcher uses semantic buttons, shareable hash state and a short aria-live status. Desktop keeps a two-column dispatch board; mobile scrolls a deliberate user selection to the evidence panel. Media autoplays silently while visible, pauses offscreen, exposes play/pause and original-size access, and restarts when the selected project changes. Reduced motion removes autoplay, automatic scrolling and nonessential transitions.
 
 ## Unresolved decisions
 

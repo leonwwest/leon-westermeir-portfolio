@@ -4,6 +4,7 @@ description: Ein helles technisches Inbetriebnahmeprotokoll für prüfbare DevOp
 colors:
   signal: "#c8ff3d"
   signal-deep: "#526d00"
+  on-signal: "#161716"
   paper: "#f1f0ea"
   paper-bright: "#faf9f5"
   graphite: "#161716"
@@ -136,6 +137,8 @@ Die Palette übersetzt Papier, Druckfarbe und Prüfsignal in eine helle, technis
 
 **The Signal Rarity Rule.** Säuregrün kennzeichnet nur überprüfbare Zustände, primäre Handlungen oder den einen Kontaktabschluss; es ist niemals dekorativer Flächenfüller.
 
+**The Signal Contrast Rule.** Text und Icons auf Säuregrün verwenden immer tiefes Graphit (`#161716`) und werden niemals durch ein automatisches Farbschema invertiert.
+
 **The Paper Before White Rule.** Neue helle Flächen beginnen mit warmem Papier oder hellem Prüfblatt, nicht mit klinischem Reinweiß.
 
 ## Typography
@@ -162,9 +165,9 @@ Die Palette übersetzt Papier, Druckfarbe und Prüfsignal in eine helle, technis
 
 ## Layout
 
-Die Seite folgt einer langen, kapitelartigen Arbeitsfläche. Hauptabschnitte erhalten einen großen fluiden Vertikalabstand; der horizontale Seitenrand wächst zwischen kleinen und großen Viewports mit. Abschnittsüberschriften teilen sich auf Desktop in schmalen Index und breite Aussage. Projektkonsole, Prozessschritte und Nachweisbereiche nutzen sichtbare Linien statt umschlossener Karten.
+Die Homepage folgt einer fokussierten Arbeitsfläche: Positionierung, Rollenpfade, Projektkonsole, zusätzliche Arbeit und Kontakt. Arbeitsweise sowie Evidenzgrenzen liegen auf einer eigenen Leseseite; Data Quality erhält eine eigene, teilbare Detailseite. Hauptabschnitte erhalten einen großen fluiden Vertikalabstand; der horizontale Seitenrand wächst zwischen kleinen und großen Viewports mit. Projektkonsole, Prozessschritte und Nachweisbereiche nutzen sichtbare Linien statt umschlossener Karten.
 
-Oberhalb von 1040px stehen Hero-Aussage und realer GitOps-Run-Capture in asymmetrischen Spalten. Projektindex und aktiver Prüfbereich folgen als zweite technische Oberfläche. Unterhalb davon werden Hero und Projektkonsole linear, während der Prozess auf zwei Spalten reduziert wird. Unter 700px bleibt nur eine Spalte: Nebenbeschreibungen im Projektindex entfallen, Navigationspunkte werden auf die Kontaktaktion verdichtet und alle Hauptaktionen behalten mindestens 44px Höhe.
+Oberhalb von 1040px stehen Hero-Aussage und realer Azure-IaC-Run-Capture in asymmetrischen Spalten. Projektindex und aktiver Prüfbereich folgen als zweite technische Oberfläche. Unterhalb davon werden Hero und Projektkonsole linear. Unter 700px bleibt nur eine Spalte: Nebenbeschreibungen im Projektindex entfallen, Navigationspunkte werden auf die Kontaktaktion verdichtet und alle Hauptaktionen behalten mindestens 44px Höhe.
 
 **The Chapter Distance Rule.** Große Abstände trennen eigenständige Argumente; feine Linien trennen Einträge innerhalb eines Arguments.
 
@@ -219,9 +222,19 @@ Die Navigation ist eine einzelne horizontale Zeile mit klarer Wortmarke, zwei Te
 
 Die Signaturkomponente verbindet fünf semantische Projektzeilen mit einem aktiven Prüfbereich. Der aktive Auftrag invertiert auf Graphit, während die rechte Inspektionsleiste Säuregrün trägt. Die eigentliche Projektgrafik ist immer ein realer Run-Capture; darunter folgen Problem, Ergebnis, Prüfnachweis, Technologien und Repository-Link in dieser Reihenfolge.
 
+Die Auswahl ist über `#project=<id>` teilbar. Projektzeilen verwenden einen Auswahl-Chevron statt eines External-Link-Pfeils. Dynamische Änderungen werden mit einer kurzen Statusmeldung angekündigt; der vollständige Prüfbereich ist keine atomare Live-Region.
+
+### Role Routes
+
+Direkt nach dem Hero führen drei scharfkantige Rollenpfade zu Cloud & Platform, Microsoft & Automation sowie Data & Business Applications. Sie übersetzen die gleiche technische Evidenz für unterschiedliche Einstiegsfragen, ohne die primäre Cloud-/Platform-Positionierung zu verändern.
+
+### Evidence Detail Pages
+
+Detailseiten verwenden die gleichen Linien, Typografiestimmen und Signalregeln wie die Homepage, aber eine lesende Dramaturgie: Ergebnis, realer Beleg, Prozesspfad, Teamtransfer und Grenze. Sie sind direkte Bewerbungsziele und erhalten eigene Metadaten sowie bestehende reale Projektbilder.
+
 ### Hero Evidence Frame
 
-Der Hero zeigt einen realen GitOps-Verifikationslauf mit einer knappen, faktischen Bildunterschrift. Die harte Einfassung und der mechanische Offset machen den Run-Capture zum einzigen bewusst aufliegenden Werkstück der ersten Ansicht.
+Der Hero zeigt einen realen Azure-IaC-Verifikationslauf mit einer knappen, faktischen Bildunterschrift. Die harte Einfassung und der mechanische Offset machen den Run-Capture zum einzigen bewusst aufliegenden Werkstück der ersten Ansicht. Medien laufen stumm und in Schleife, solange sie sichtbar sind, pausieren außerhalb des Viewports und erhalten eine sichtbare Play-/Pause-Aktion sowie einen Original-Link. Bei reduzierter Bewegung starten sie nicht automatisch.
 
 ## Do's and Don'ts
 

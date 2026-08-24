@@ -1,7 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { SiteFooter, SiteHeader } from "@/app/components/site-chrome";
+import projectEvidence from "@/content/project-evidence.json";
+
+type EvidenceRecord = {
+  release: string;
+  testTotal: number;
+  highlights: string[];
+  boundary: string;
+  ciRun: string;
+};
+
+const verified = projectEvidence.projects as Record<string, EvidenceRecord>;
 
 type Project = {
   id: string;
@@ -13,14 +25,17 @@ type Project = {
   decision: string;
   boundary: string;
   stack: string[];
-  image: string;
+  image?: string;
   still: string;
   video?: string;
   imageAlt: string;
   repo?: string;
   linkLabel?: string;
   status: string;
-  tests: string;
+  highlights: string[];
+  verification: string;
+  transfer: string;
+  ciRun?: string;
   proof?: string;
 };
 
@@ -32,16 +47,19 @@ const projects: Project[] = [
     purpose: "Eine sichere Azure-Plattform aus Code planen und kontrolliert ausliefern.",
     result:
       "Terraform provisioniert Container Apps, Key Vault, Monitoring und kostenbewusste Leitplanken. GitHub Actions authentifiziert sich per OIDC.",
-    evidence: "13 automatisierte Tests / AzureRM v5 Contract / Release v1.1.0",
+    evidence: `${verified["azure-platform"].testTotal} verifizierte Tests / AzureRM v5 Contract / Release ${verified["azure-platform"].release}`,
     decision: "GitHub Actions authentifiziert sich kurzlebig per OIDC statt mit gespeicherten Cloud-Secrets.",
-    boundary: "Das öffentliche Evidence-Paket belegt lokale Planung und Verträge, nicht dauerhaft betriebene Azure-Ressourcen.",
+    boundary: verified["azure-platform"].boundary,
     stack: ["Terraform", "Azure", "OIDC", "GitHub Actions"],
-    image: "/projects/azure-platform-demo.gif",
     still: "/projects/azure-platform.png",
+    video: "/projects/azure-platform-demo.mp4",
     imageAlt: "Terminaldemo des Azure Platform Infrastructure-as-Code Labs",
     repo: "https://github.com/leonwwest/azure-platform-iac-lab",
-    status: "v1.1.0",
-    tests: "13 / 13",
+    status: verified["azure-platform"].release,
+    highlights: verified["azure-platform"].highlights,
+    verification: "13 / 13",
+    transfer: "Terraform-Module pflegen, CI-Guardrails absichern und Azure-Änderungen ohne langlebige Secrets ausliefern.",
+    ciRun: verified["azure-platform"].ciRun,
   },
   {
     id: "gitops-platform",
@@ -50,16 +68,19 @@ const projects: Project[] = [
     purpose: "Clusterzustand aus Git reproduzierbar machen, messen und wiederherstellen.",
     result:
       "Argo CD und Kustomize halten den gewünschten Zustand synchron. Policies, SLOs und ein Burn-Rate-Recovery-Ablauf machen Drift sichtbar und behebbar.",
-    evidence: "18 Tests / drei Overlays / Release v1.2.0",
+    evidence: `${verified["gitops-platform"].testTotal} verifizierte Tests / drei Overlays / Release ${verified["gitops-platform"].release}`,
     decision: "Ein gemeinsamer Basiszustand wird durch kleine, prüfbare Umgebungs-Overlays erweitert.",
-    boundary: "Das Lab läuft lokal und dokumentiert Betriebsmechanik; es ist kein fremdes Produktionscluster.",
+    boundary: verified["gitops-platform"].boundary,
     stack: ["Kubernetes", "Argo CD", "Kustomize", "Prometheus"],
-    image: "/projects/gitops-platform-demo.gif",
     still: "/projects/gitops-platform.png",
+    video: "/projects/gitops-platform-demo.mp4",
     imageAlt: "Terminaldemo des Kubernetes GitOps Platform Labs",
     repo: "https://github.com/leonwwest/gitops-platform-lab",
-    status: "v1.2.0",
-    tests: "18 / 18",
+    status: verified["gitops-platform"].release,
+    highlights: verified["gitops-platform"].highlights,
+    verification: "24 / 24",
+    transfer: "Git-basierte Deployments, Umgebungs-Overlays, Drift-Recovery und SLO-Nachweise in den Plattformbetrieb übernehmen.",
+    ciRun: verified["gitops-platform"].ciRun,
   },
   {
     id: "incident-automation",
@@ -68,16 +89,19 @@ const projects: Project[] = [
     purpose: "Metriken, Logs und Traces in eine sichere Incident-Entscheidung überführen.",
     result:
       "Ein reproduzierbar langsamer FastAPI-Dienst liefert reale Telemetrie an Prometheus, Loki und Jaeger. Deterministische Triage priorisiert Hypothesen, führt aber keine Änderung selbst aus.",
-    evidence: "SEV2-Fixture / CI und Security Gates / Release v1.1.0",
+    evidence: "4 Tests + 5 Endpoint-Checks / SEV2-Fixture / CI und Security Gates",
     decision: "Automatisierung sammelt und erklärt Belege; Restart, Scale, Rollback und Credential-Rotation bleiben freigabepflichtig.",
-    boundary: "Latenz, Fehler und Kosten entstehen in einer lokalen Simulation, nicht in einem Produktionsausfall.",
+    boundary: verified["incident-automation"].boundary,
     stack: ["OpenTelemetry", "Prometheus", "Grafana", "Loki"],
-    image: "/projects/incident-response-demo.gif",
     still: "/projects/incident-response.png",
+    video: "/projects/incident-response-demo.mp4",
     imageAlt: "Realer Lauf des Incident Automation Labs mit langsamer Anfrage und Dry-Run-Triage",
     repo: "https://github.com/leonwwest/slow-ai-app-incident-lab",
-    status: "v1.1.0",
-    tests: "SEV2 DRY RUN",
+    status: verified["incident-automation"].release,
+    highlights: verified["incident-automation"].highlights,
+    verification: "SEV2 DRY RUN",
+    transfer: "Telemetrie korrelieren, Hypothesen priorisieren und freigabepflichtige Recovery-Schritte in belastbare Runbooks überführen.",
+    ciRun: verified["incident-automation"].ciRun,
   },
   {
     id: "m365-automation",
@@ -86,16 +110,19 @@ const projects: Project[] = [
     purpose: "Bestände prüfen, Abweichungen erklären und Änderungen kontrolliert freigeben.",
     result:
       "Python und PowerShell erzeugen aus einem reproduzierbaren Inventar denselben Governance-Report. Remediation bleibt bis zur expliziten Freigabe im Dry Run.",
-    evidence: "11 Tests / 11 deterministische Findings / Release v1.2.0",
+    evidence: "11 Tests (9 Python + 2 Pester) / 11 deterministische Findings / Release v1.2.0",
     decision: "Inventar, Bewertung und Remediation sind getrennte Schritte.",
-    boundary: "Die öffentliche Demo nutzt synthetische Tenant-Daten und führt keine Änderungen aus.",
+    boundary: verified["m365-automation"].boundary,
     stack: ["PowerShell", "Python", "Microsoft Graph", "GitHub Actions"],
-    image: "/projects/m365-automation-demo.gif",
     still: "/projects/m365-automation.png",
+    video: "/projects/m365-automation-demo.mp4",
     imageAlt: "Terminaldemo des Azure und Microsoft 365 Tenant Guard",
     repo: "https://github.com/leonwwest/azure-m365-automation-lab",
-    status: "v1.2.0",
-    tests: "11 / 11",
+    status: verified["m365-automation"].release,
+    highlights: verified["m365-automation"].highlights,
+    verification: "11 / 11",
+    transfer: "Tenant-Inventare, Governance-Reports und kontrollierte Remediation mit PowerShell und Python automatisieren.",
+    ciRun: verified["m365-automation"].ciRun,
   },
   {
     id: "leon-work-os",
@@ -114,62 +141,184 @@ const projects: Project[] = [
     linkLabel: "Sanitisierte Architektur und Recovery-Nachweise öffnen →",
     proof: "/work-os-evidence",
     status: "Betrieb",
-    tests: "15.08.2026",
+    highlights: ["20/20 SQLite-Datenbanken", "2.898 Archivobjekte", "Restore validiert · 5,96 s"],
+    verification: "15.08.2026",
+    transfer: "Automationsgrenzen, Freigaben, Wiederanlauf und Betriebsübergaben für interne Systeme nachvollziehbar gestalten.",
   },
 ];
 
-const workflow = [
-  ["Unklarheit eingrenzen", "Randbedingungen, Risiken und das kleinste überprüfbare Ziel festhalten."],
-  ["System automatisieren", "Konfiguration in Code überführen und sichere Standardwerte setzen."],
-  ["Verhalten beweisen", "Tests, Metriken und reproduzierbare Demos statt bloßer Behauptungen."],
-  ["Betrieb übergeben", "Runbook, Fehlerbilder und Recovery so dokumentieren, dass andere weiterkommen."],
+const roleRoutes = [
+  {
+    title: "Cloud & Platform",
+    copy: "Azure IaC, GitOps, Delivery und Recovery",
+    projectId: "azure-platform",
+  },
+  {
+    title: "Microsoft & Automation",
+    copy: "M365 Governance, PowerShell und sichere Freigaben",
+    projectId: "m365-automation",
+  },
+  {
+    title: "Data & Business Applications",
+    copy: "Data Quality, API, Power BI und Integration",
+    href: "/projects/data-quality",
+  },
 ];
 
 const directionContract = `<!--
 THESIS: Ein technisches Portfolio als helles Inbetriebnahmeprotokoll, ruhig, präzise und überprüfbar.
 OWN-WORLD: Systeme sind Aufträge; Projekte sind Prüflose; Tests, Status und Runbooks sind die sichtbaren Belege.
-STORY: Erst DevOps-Positionierung und realer GitOps-Lauf, dann fünf inspizierbare Systeme, Arbeitsweise, Grenzen und Kontakt.
-FIRST VIEWPORT: Klare Zielrolle, präzise Aussage und ein realer GitOps-Run-Capture.
+STORY: Erst Cloud- und Platform-Positionierung mit realem Azure-IaC-Lauf, dann rollenbezogene Einstiege, fünf inspizierbare Systeme, Arbeitsweise, Grenzen und Kontakt.
+FIRST VIEWPORT: Klare Zielrolle, recruiter-lesbares Ergebnis und ein realer Azure-IaC-Run-Capture.
 FORM: Scharfe Werkstattkanten, viel warme Arbeitsfläche, tiefes Graphit und Säuregrün ausschließlich als präzises Signal.
 -->`;
 
-function Wordmark() {
+function EvidenceVideo({ src, poster, label, priority = false }: { src: string; poster: string; label: string; priority?: boolean }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const playbackIntentRef = useRef<"auto" | "paused" | "playing">("auto");
+  const inViewRef = useRef(true);
+  const [playing, setPlaying] = useState(true);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncPlayback = async () => {
+      const autoplayAllowed = !reducedMotion.matches || playbackIntentRef.current === "playing";
+      const shouldPlay =
+        !document.hidden &&
+        inViewRef.current &&
+        playbackIntentRef.current !== "paused" &&
+        autoplayAllowed;
+
+      if (!shouldPlay) {
+        video.pause();
+        return;
+      }
+
+      try {
+        await video.play();
+      } catch {
+        setPlaying(false);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inViewRef.current = entry.isIntersecting;
+        void syncPlayback();
+      },
+      { threshold: 0.15 },
+    );
+
+    observer.observe(video);
+    document.addEventListener("visibilitychange", syncPlayback);
+    reducedMotion.addEventListener("change", syncPlayback);
+    void syncPlayback();
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", syncPlayback);
+      reducedMotion.removeEventListener("change", syncPlayback);
+    };
+  }, [src]);
+
+  const togglePlayback = async () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      playbackIntentRef.current = "playing";
+      try {
+        await video.play();
+      } catch {
+        setPlaying(false);
+      }
+    } else {
+      playbackIntentRef.current = "paused";
+      video.pause();
+    }
+  };
+
   return (
-    <a className="wordmark" href="#top" aria-label="Leon Westermeir, zum Seitenanfang">
-      <span className="wordmark-mark" aria-hidden="true">LW</span>
-      <span>Leon Westermeir</span>
-    </a>
+    <div className="video-shell">
+      <video
+        ref={videoRef}
+        className="motion-demo"
+        src={src}
+        poster={playing ? undefined : poster}
+        aria-label={label}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload={priority ? "auto" : "metadata"}
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+      />
+      <div className="media-actions">
+        <button type="button" onClick={togglePlayback} aria-pressed={playing}>
+          {playing ? "Demo pausieren" : "Demo abspielen"}
+        </button>
+        <a href={src} target="_blank" rel="noreferrer">Original öffnen ↗</a>
+      </div>
+    </div>
   );
 }
 
 export default function Home() {
   const [activeId, setActiveId] = useState(projects[0].id);
+  const [announcement, setAnnouncement] = useState("");
+  const inspectionRef = useRef<HTMLElement>(null);
   const active = projects.find((project) => project.id === activeId) ?? projects[0];
+
+  useEffect(() => {
+    const syncFromHash = () => {
+      const params = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+      const requested = params.get("project");
+      if (requested && projects.some((project) => project.id === requested)) {
+        setActiveId(requested);
+      } else if (params.has("project")) {
+        setActiveId(projects[0].id);
+      }
+    };
+    syncFromHash();
+    window.addEventListener("hashchange", syncFromHash);
+    return () => window.removeEventListener("hashchange", syncFromHash);
+  }, []);
+
+  const selectProject = (projectId: string, scrollTarget: "inspection" | "section" = "inspection") => {
+    const project = projects.find((candidate) => candidate.id === projectId);
+    if (!project) return;
+    setActiveId(projectId);
+    setAnnouncement(`${project.title} ausgewählt.`);
+    window.history.replaceState(null, "", `#project=${projectId}`);
+    window.requestAnimationFrame(() => {
+      const compactLayout = window.matchMedia("(max-width: 1040px)").matches;
+      const target = compactLayout || scrollTarget === "inspection" ? inspectionRef.current : document.getElementById("projekte");
+      if (scrollTarget === "section" || compactLayout) {
+        target?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+      }
+    });
+  };
 
   return (
     <>
       <div dangerouslySetInnerHTML={{ __html: directionContract }} />
       <a className="skip-link" href="#main">Zum Inhalt springen</a>
 
-      <header className="site-header" id="top">
-        <Wordmark />
-        <nav aria-label="Hauptnavigation">
-          <a href="#projekte">Projekte</a>
-          <a href="#arbeitsweise">Arbeitsweise</a>
-          <a className="header-contact" href="mailto:leon.westermeir@ibmw-engineering.com">Kontakt ↗</a>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <main id="main">
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
             <p className="eyebrow">DevOps / Platform Engineering</p>
-            <h1 id="hero-title">IaC. GitOps.<br />Sicher im Betrieb.</h1>
+            <h1 id="hero-title">Cloud aus Code.<br />Sicher im Betrieb.</h1>
             <p className="hero-intro">
-              Ich automatisiere Azure- und Kubernetes-Plattformen mit IaC, CI/CD, Observability und dokumentiertem Recovery.
+              Ich plane Azure-Plattformen als Infrastructure as Code, liefere Kubernetes-Änderungen über Git aus und belege den Betrieb mit CI, Telemetrie und Recovery-Runbooks.
             </p>
             <div className="hero-actions">
-              <a className="primary-action" href="#projekte">DevOps-Projekte</a>
+              <a className="primary-action" href="#einstieg">Passendes Projekt finden</a>
               <a className="text-action" href="/Leon_Westermeir_Lebenslauf.pdf" target="_blank" rel="noreferrer">Lebenslauf</a>
               <a className="text-action" href="https://github.com/leonwwest" target="_blank" rel="noreferrer">GitHub</a>
             </div>
@@ -177,29 +326,52 @@ export default function Home() {
 
           <figure className="hero-evidence">
             <div className="hero-evidence-frame">
-              <Image className="motion-demo" src="/projects/gitops-platform-demo.gif" alt="Realer Verifikationslauf des GitOps Platform Labs" width={1280} height={720} unoptimized priority />
-              <Image className="still-demo" src="/projects/gitops-platform.png" alt="Verifikationslauf des GitOps Platform Labs" width={1280} height={640} priority />
+              <EvidenceVideo
+                src="/projects/azure-platform-demo.mp4"
+                poster="/projects/azure-platform.png"
+                label="Realer Verifikationslauf des Azure Platform Infrastructure-as-Code Labs"
+                priority
+              />
             </div>
             <figcaption>
-              <strong>GitOps Platform Lab</strong>
-              <span>Argo CD: Synced / Healthy</span>
-              <span>Drift: 2 → 1 Replica</span>
+              <strong>Azure Platform IaC</strong>
+              <span>13/13 Tests</span>
+              <span>5 Policy-Guardrails</span>
             </figcaption>
           </figure>
         </section>
 
-        <section className="experience-strip" aria-label="Qualifikation und technische Praxis">
-          <div><span>Zielrolle</span><strong>DevOps / Platform Engineering</strong></div>
-          <div><span>Cloud</span><strong>Azure / Terraform / OIDC</strong></div>
-          <div><span>Platform</span><strong>Kubernetes / Argo CD / Kustomize</strong></div>
-          <div><span>Operations</span><strong>Prometheus / OpenTelemetry / Runbooks</strong></div>
+        <section className="role-routes" id="einstieg" aria-labelledby="routes-title">
+          <p id="routes-title">Passender Einstieg nach Rolle</p>
+          <div className="role-route-list">
+            {roleRoutes.map((route) => route.projectId ? (
+              <a
+                key={route.title}
+                href={`#project=${route.projectId}`}
+                onClick={(event) => {
+                  event.preventDefault();
+                  selectProject(route.projectId, "section");
+                }}
+              >
+                <strong>{route.title}</strong>
+                <span>{route.copy}</span>
+                <b>Projektpfad öffnen</b>
+              </a>
+            ) : (
+              <a key={route.title} href={route.href}>
+                <strong>{route.title}</strong>
+                <span>{route.copy}</span>
+                <b>Projektpfad öffnen</b>
+              </a>
+            ))}
+          </div>
         </section>
 
         <section className="project-section" id="projekte" aria-labelledby="projects-title">
           <div className="section-heading">
             <div>
-              <h2 id="projects-title">DevOps-Arbeit zum Prüfen.</h2>
-              <p>Infrastruktur, Delivery, Observability und Recovery führen direkt zu Code, CI und Runbooks.</p>
+              <h2 id="projects-title">Engineering-Belege zum Prüfen.</h2>
+              <p>Jedes System führt zuerst zum Ergebnis und dann zu Code, CI, Entscheidungen und ehrlichen Betriebsgrenzen.</p>
             </div>
           </div>
 
@@ -212,44 +384,44 @@ export default function Home() {
                     className="project-row"
                     data-active={selected}
                     key={project.id}
-                    onClick={() => setActiveId(project.id)}
+                    onClick={() => selectProject(project.id)}
                     aria-pressed={selected}
+                    aria-controls="project-inspection"
                   >
                     <span className="project-row-copy">
                       <strong>{project.title}</strong>
                       <small>{project.purpose}</small>
                     </span>
                     <span className="row-status">{project.status}</span>
-                    <span className="row-arrow" aria-hidden="true">{selected ? "→" : "↗"}</span>
+                    <span className="row-indicator" data-selected={selected} aria-hidden="true" />
                   </button>
                 );
               })}
             </div>
 
-            <article className="inspection" aria-live="polite" aria-atomic="true">
+            <p className="sr-only" role="status" aria-live="polite">{announcement}</p>
+            <article className="inspection" id="project-inspection" ref={inspectionRef} tabIndex={-1}>
               <div className="inspection-head">
                 <span>{active.role}</span>
-                <span>TEST {active.tests}</span>
+                <span>VERIFIZIERT {active.verification}</span>
               </div>
+              <ul className="proof-highlights" aria-label="Verifizierte Projektergebnisse">
+                {active.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+              </ul>
               <div className="demo-frame">
                 {active.video ? (
-                  <video
-                    className="motion-demo product-video"
-                    key={`motion-${active.video}`}
+                  <EvidenceVideo
+                    key={active.video}
                     src={active.video}
                     poster={active.still}
-                    aria-label={active.imageAlt}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    controls
+                    label={active.imageAlt}
                   />
                 ) : (
-                  <Image className="motion-demo" key={`motion-${active.image}`} src={active.image} alt={active.imageAlt} width={1280} height={720} unoptimized />
+                  <a className="image-original" href={active.still} target="_blank" rel="noreferrer" aria-label="Originalansicht des Nachweises öffnen">
+                    <Image key={active.image ?? active.still} src={active.image ?? active.still} alt={active.imageAlt} width={1280} height={720} unoptimized />
+                    <span>Original vergrößern ↗</span>
+                  </a>
                 )}
-                <Image className="still-demo" key={`still-${active.still}`} src={active.still} alt={active.imageAlt} width={1280} height={640} />
               </div>
               <div className="inspection-copy">
                 <p className="inspection-kicker">Was hier gelöst wird</p>
@@ -258,13 +430,17 @@ export default function Home() {
                 <dl className="evidence-facts">
                   <div><dt>Entscheidung</dt><dd>{active.decision}</dd></div>
                   <div><dt>Nachweis</dt><dd>{active.evidence}</dd></div>
+                  <div><dt>Im Team</dt><dd>{active.transfer}</dd></div>
                   <div><dt>Grenze</dt><dd>{active.boundary}</dd></div>
                 </dl>
                 <ul className="stack-list" aria-label="Technologien">
                   {active.stack.map((item) => <li key={item}>{item}</li>)}
                 </ul>
                 {active.repo ? (
-                  <a className="repo-link" href={active.repo} target="_blank" rel="noreferrer">Repository und Runbook öffnen ↗</a>
+                  <div className="evidence-links">
+                    <a className="repo-link" href={active.repo} target="_blank" rel="noreferrer">Repository und Runbook öffnen ↗</a>
+                    {active.ciRun ? <a className="repo-link" href={active.ciRun} target="_blank" rel="noreferrer">Verifizierten CI-Lauf öffnen ↗</a> : null}
+                  </div>
                 ) : active.proof ? (
                   <a className="repo-link" href={active.proof}>{active.linkLabel}</a>
                 ) : (
@@ -275,67 +451,24 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="workflow-section" id="arbeitsweise" aria-labelledby="workflow-title">
-          <div className="section-heading section-heading-light">
-            <div>
-              <h2 id="workflow-title">Schnell lernen.<br />Sauber belegen.</h2>
-              <p>Produktiver Betrieb verlangt mehr als eine gute Demo. Darum baue ich von Anfang an auf Nachvollziehbarkeit und sichere Übergaben.</p>
-            </div>
-          </div>
-          <ol className="workflow-list">
-            {workflow.map(([title, copy]) => (
-              <li key={title}>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="proof-section" aria-labelledby="proof-title">
-          <div className="section-heading">
-            <div>
-              <h2 id="proof-title">Was die Nachweise<br />wirklich abdecken.</h2>
-            </div>
-          </div>
-          <div className="proof-grid">
-            <div className="proof-statement">
-              <p>Die öffentlichen Labs belegen reproduzierbare Engineering-Abläufe. Leon Work OS ergänzt reale Eigenbetriebsdaten. Claims bleiben so präzise wie die zugänglichen Belege.</p>
-            </div>
-            <dl className="proof-facts">
-              <div><dt>Heute</dt><dd>System Engineering, Support &amp; Automation</dd></div>
-              <div><dt>Zielrolle</dt><dd>DevOps / Cloud Platform Engineering</dd></div>
-              <div><dt>Arbeitsort</dt><dd>Raum Augsburg / München, remote in Deutschland</dd></div>
-              <div><dt>Sprachen</dt><dd>Deutsch und Englisch</dd></div>
-            </dl>
-          </div>
-        </section>
-
         <section className="more-section" aria-labelledby="more-title">
           <h2 id="more-title">Außerdem gebaut</h2>
           <div className="more-list">
-            <a href="https://github.com/leonwwest/operations-kpi-automation-demo" target="_blank" rel="noreferrer"><span>Operations Data Quality</span><small>Python / API / Power BI</small><b>↗</b></a>
+            <a id="data-quality" href="/projects/data-quality"><span>Operations Data Quality</span><small>27/27 Tests / 6 Quality Checks / Power BI</small><b>Details</b></a>
             <a href="https://github.com/leonwwest/private-ai-lab" target="_blank" rel="noreferrer"><span>Private AI Platform</span><small>Docker / k3d / Observability</small><b>↗</b></a>
             <a href="https://github.com/leonwwest/cloudscrobble-ios" target="_blank" rel="noreferrer"><span>CloudScrobble</span><small>Swift / Go / Cloudflare Workers</small><b>↗</b></a>
           </div>
+          <a className="work-method-link" href="/arbeitsweise">Arbeitsweise, Evidenzgrenzen und Übergaben ansehen →</a>
         </section>
 
         <section className="contact-section" id="kontakt" aria-labelledby="contact-title">
-          <p className="contact-kicker">Offen für DevOps, Cloud Platform und Infrastructure Automation.</p>
-          <h2 id="contact-title">Lassen Sie uns über<br />Ihre DevOps-Rolle sprechen.</h2>
+          <p className="contact-kicker">Offen für Cloud, Platform und Infrastructure Automation.</p>
+          <h2 id="contact-title">Lassen Sie uns über<br />Ihr System sprechen.</h2>
           <a className="contact-mail" href="mailto:leon.westermeir@ibmw-engineering.com">leon.westermeir@<wbr />ibmw-engineering.com <span aria-hidden="true">↗</span></a>
         </section>
       </main>
 
-      <footer>
-        <Wordmark />
-        <p>Gebaut mit realen Projektdaten. Zuletzt geprüft: August 2026.</p>
-        <nav aria-label="Rechtliches und Profile">
-          <a href="/impressum">Impressum</a>
-          <a href="/datenschutz">Datenschutz</a>
-          <a href="https://github.com/leonwwest" target="_blank" rel="noreferrer">GitHub ↗</a>
-        </nav>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
