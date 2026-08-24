@@ -175,41 +175,84 @@ FORM: Scharfe Werkstattkanten, viel warme Arbeitsfläche, tiefes Graphit und Sä
 
 function EvidenceVideo({ src, poster, label, priority = false }: { src: string; poster: string; label: string; priority?: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
+  const playbackIntentRef = useRef<"auto" | "paused" | "playing">("auto");
+  const inViewRef = useRef(true);
+  const [playing, setPlaying] = useState(true);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncPlayback = async () => {
+      const autoplayAllowed = !reducedMotion.matches || playbackIntentRef.current === "playing";
+      const shouldPlay =
+        !document.hidden &&
+        inViewRef.current &&
+        playbackIntentRef.current !== "paused" &&
+        autoplayAllowed;
+
+      if (!shouldPlay) {
+        video.pause();
+        return;
+      }
+
+      try {
+        await video.play();
+      } catch {
+        setPlaying(false);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inViewRef.current = entry.isIntersecting;
+        void syncPlayback();
+      },
+      { threshold: 0.15 },
+    );
+
+    observer.observe(video);
+    document.addEventListener("visibilitychange", syncPlayback);
+    reducedMotion.addEventListener("change", syncPlayback);
+    void syncPlayback();
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", syncPlayback);
+      reducedMotion.removeEventListener("change", syncPlayback);
+    };
+  }, [src]);
 
   const togglePlayback = async () => {
     const video = videoRef.current;
     if (!video) return;
     if (video.paused) {
+      playbackIntentRef.current = "playing";
       try {
         await video.play();
       } catch {
         setPlaying(false);
       }
     } else {
+      playbackIntentRef.current = "paused";
       video.pause();
     }
   };
 
   return (
     <div className="video-shell">
-      <Image
-        className={`video-poster${playing ? " video-poster-hidden" : ""}`}
-        src={poster}
-        alt=""
-        fill
-        sizes="(max-width: 1040px) 100vw, 50vw"
-        priority={priority}
-      />
       <video
         ref={videoRef}
-        className={`motion-demo${playing ? " video-playing" : ""}`}
+        className="motion-demo"
         src={src}
+        poster={playing ? undefined : poster}
         aria-label={label}
+        autoPlay
         muted
         loop
         playsInline
-        preload="none"
+        preload={priority ? "auto" : "metadata"}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
       />

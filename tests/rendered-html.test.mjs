@@ -45,12 +45,12 @@ test("server-renders the portfolio and its evidence path", async () => {
   assert.match(html, /href="#project=azure-platform"/);
   assert.match(html, /href="#project=m365-automation"/);
   assert.match(html, /href="\/projects\/data-quality"/);
-  assert.match(html, /Demo abspielen/);
+  assert.match(html, /Demo pausieren/);
   assert.match(html, /Original öffnen/);
   assert.match(html, /13\/13 Tests/);
   assert.match(html, /v1\.3\.0/);
   assert.doesNotMatch(html, /18 \/ 18|v1\.2\.0[^<]{0,80}18 Tests/);
-  assert.doesNotMatch(html, /autoplay/i);
+  assert.match(html, /<video[^>]*autoplay/i);
   assert.doesNotMatch(html, /-demo\.gif/);
   assert.doesNotMatch(html, /aria-atomic/i);
   assert.equal((html.match(/aria-live=/g) ?? []).length, 1);

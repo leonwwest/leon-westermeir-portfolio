@@ -42,7 +42,7 @@ Leon does not present a list of tools as expertise. He shows small, reproducible
 - Do not fabricate customers, testimonials, production usage, employer endorsements or deployment scale.
 - No LinkedIn account is available or required.
 - The site must be responsive, keyboard-accessible and respect reduced-motion preferences.
-- Evidence media starts paused, remains user-controlled and exposes an original-size path.
+- Evidence media autoplays silently while visible, pauses offscreen, respects reduced-motion preferences, remains user-controlled and exposes an original-size path.
 - Accessibility and performance regressions are blocked by Axe and Lighthouse gates in CI.
 
 ## Brand Commitments

@@ -539,21 +539,8 @@ h1 {
 .video-shell video {
   position: relative;
   z-index: 1;
-  opacity: 0;
-}
-
-.video-shell video.video-playing {
   opacity: 1;
-}
-
-.video-poster {
-  z-index: 1;
-  object-fit: contain;
-  pointer-events: none;
-}
-
-.video-poster-hidden {
-  opacity: 0;
+  background: var(--demo-bg);
 }
 
 .media-actions {

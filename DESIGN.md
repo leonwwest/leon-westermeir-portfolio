@@ -234,7 +234,7 @@ Detailseiten verwenden die gleichen Linien, Typografiestimmen und Signalregeln w
 
 ### Hero Evidence Frame
 
-Der Hero zeigt einen realen Azure-IaC-Verifikationslauf mit einer knappen, faktischen Bildunterschrift. Die harte Einfassung und der mechanische Offset machen den Run-Capture zum einzigen bewusst aufliegenden Werkstück der ersten Ansicht. Medien starten pausiert und erhalten eine sichtbare Play-/Pause-Aktion sowie einen Original-Link.
+Der Hero zeigt einen realen Azure-IaC-Verifikationslauf mit einer knappen, faktischen Bildunterschrift. Die harte Einfassung und der mechanische Offset machen den Run-Capture zum einzigen bewusst aufliegenden Werkstück der ersten Ansicht. Medien laufen stumm und in Schleife, solange sie sichtbar sind, pausieren außerhalb des Viewports und erhalten eine sichtbare Play-/Pause-Aktion sowie einen Original-Link. Bei reduzierter Bewegung starten sie nicht automatisch.
 
 ## Do's and Don'ts
 

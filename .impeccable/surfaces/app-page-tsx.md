@@ -25,11 +25,11 @@ Systems Evidence Board: a bright industrial commissioning desk translated to the
 
 ## Memorable moment
 
-The first viewport behaves like a commissioning receipt: Leon's role and a recruiter-readable Azure result share one aligned board, while a real paused terminal capture sits in the active inspection bay. Three role routes then take visitors directly to the evidence most relevant to their hiring question.
+The first viewport behaves like a commissioning receipt: Leon's role and a recruiter-readable Azure result share one aligned board, while a real silently looping terminal capture runs in the active inspection bay. Three role routes then take visitors directly to the evidence most relevant to their hiring question.
 
 ## Interaction and adaptation
 
-One project switcher uses semantic buttons, shareable hash state and a short aria-live status. Desktop keeps a two-column dispatch board; mobile scrolls a deliberate user selection to the evidence panel. Media starts paused, exposes play/pause and original-size access, and remains still until the visitor acts. Reduced motion removes automatic scrolling and nonessential transitions.
+One project switcher uses semantic buttons, shareable hash state and a short aria-live status. Desktop keeps a two-column dispatch board; mobile scrolls a deliberate user selection to the evidence panel. Media autoplays silently while visible, pauses offscreen, exposes play/pause and original-size access, and restarts when the selected project changes. Reduced motion removes autoplay, automatic scrolling and nonessential transitions.
 
 ## Unresolved decisions
 
