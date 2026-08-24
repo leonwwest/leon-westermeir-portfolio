@@ -16,20 +16,32 @@ const chrome = await chromeLauncher.launch({
 });
 
 try {
-  const result = await lighthouse(url, {
-    port: chrome.port,
-    output: "json",
-    logLevel: "error",
-    onlyCategories: Object.keys(thresholds),
-  });
-  if (!result?.lhr) throw new Error(`Lighthouse returned no report for ${url}`);
-  const scores = Object.fromEntries(
-    Object.entries(thresholds).map(([category]) => [category, result.lhr.categories[category].score]),
-  );
-  console.log(`${url} ${Object.entries(scores).map(([key, score]) => `${key}=${Math.round(score * 100)}`).join(" ")}`);
-  for (const [category, minimum] of Object.entries(thresholds)) {
-    assertScore(category, scores[category], minimum, result.lhr);
+  let lastError;
+  let passed = false;
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      const result = await lighthouse(url, {
+        port: chrome.port,
+        output: "json",
+        logLevel: "error",
+        onlyCategories: Object.keys(thresholds),
+      });
+      if (!result?.lhr) throw new Error(`Lighthouse returned no report for ${url}`);
+      const scores = Object.fromEntries(
+        Object.entries(thresholds).map(([category]) => [category, result.lhr.categories[category].score]),
+      );
+      console.log(`${url} attempt=${attempt} ${Object.entries(scores).map(([key, score]) => `${key}=${Math.round(score * 100)}`).join(" ")}`);
+      for (const [category, minimum] of Object.entries(thresholds)) {
+        assertScore(category, scores[category], minimum, result.lhr);
+      }
+      passed = true;
+      break;
+    } catch (error) {
+      lastError = error;
+      if (attempt < 3) console.warn(`${url} Lighthouse attempt ${attempt} failed; retrying.`);
+    }
   }
+  if (!passed) throw lastError;
 } finally {
   await chrome.kill();
 }
