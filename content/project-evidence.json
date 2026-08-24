@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-08-21",
+  "verifiedAt": "2026-08-24",
   "projects": {
     "azure-platform": {
       "title": "Azure Platform IaC",
@@ -79,8 +79,8 @@
     "data-quality": {
       "title": "Operations Data Quality",
       "repository": "https://github.com/leonwwest/operations-kpi-automation-demo",
-      "verifiedRef": "54716b6",
-      "ciRun": "https://github.com/leonwwest/operations-kpi-automation-demo/actions/runs/31848484058",
+      "verifiedRef": "e2697b6",
+      "ciRun": "https://github.com/leonwwest/operations-kpi-automation-demo/actions/runs/32752602202",
       "release": "v1.1.0",
       "testSuites": {
         "Pytest": 27
