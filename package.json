@@ -54,8 +54,9 @@
     "@esbuild-kit/core-utils": {
       "esbuild": "0.25.12"
     },
-    "fast-uri": "3.1.5",
-    "js-yaml": "4.3.1",
+    "fast-uri": "3.1.6",
+    "fflate": "0.7.5",
+    "js-yaml": "4.3.2",
     "minimatch@3.1.5": {
       "brace-expansion": "1.1.18"
     },
