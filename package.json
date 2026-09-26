@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@axe-core/puppeteer": "4.13.0",
-    "@cloudflare/vite-plugin": "1.52.1",
+    "@cloudflare/vite-plugin": "1.60.2",
     "@eslint/js": "9.39.4",
     "@next/eslint-plugin-next": "16.3.0",
     "@tailwindcss/postcss": "4.2.1",
@@ -47,7 +47,7 @@
     "typescript-eslint": "8.59.3",
     "vinext": "1.0.0-beta.8",
     "vite": "8.2.1",
-    "wrangler": "4.123.0"
+    "wrangler": "4.141.0"
   },
   "overrides": {
     "@babel/core": "7.29.7",
